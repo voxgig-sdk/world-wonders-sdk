@@ -1,0 +1,67 @@
+<?php
+declare(strict_types=1);
+
+// WorldWonders SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+WorldWondersUtility::setRegistrar(function (WorldWondersUtility $u): void {
+    $u->clean = [WorldWondersClean::class, 'call'];
+    $u->done = [WorldWondersDone::class, 'call'];
+    $u->make_error = [WorldWondersMakeError::class, 'call'];
+    $u->feature_add = [WorldWondersFeatureAdd::class, 'call'];
+    $u->feature_hook = [WorldWondersFeatureHook::class, 'call'];
+    $u->feature_init = [WorldWondersFeatureInit::class, 'call'];
+    $u->fetcher = [WorldWondersFetcher::class, 'call'];
+    $u->make_fetch_def = [WorldWondersMakeFetchDef::class, 'call'];
+    $u->make_context = [WorldWondersMakeContext::class, 'call'];
+    $u->make_options = [WorldWondersMakeOptions::class, 'call'];
+    $u->make_request = [WorldWondersMakeRequest::class, 'call'];
+    $u->make_response = [WorldWondersMakeResponse::class, 'call'];
+    $u->make_result = [WorldWondersMakeResult::class, 'call'];
+    $u->make_point = [WorldWondersMakePoint::class, 'call'];
+    $u->make_spec = [WorldWondersMakeSpec::class, 'call'];
+    $u->make_url = [WorldWondersMakeUrl::class, 'call'];
+    $u->param = [WorldWondersParam::class, 'call'];
+    $u->prepare_auth = [WorldWondersPrepareAuth::class, 'call'];
+    $u->prepare_body = [WorldWondersPrepareBody::class, 'call'];
+    $u->prepare_headers = [WorldWondersPrepareHeaders::class, 'call'];
+    $u->prepare_method = [WorldWondersPrepareMethod::class, 'call'];
+    $u->prepare_params = [WorldWondersPrepareParams::class, 'call'];
+    $u->prepare_path = [WorldWondersPreparePath::class, 'call'];
+    $u->prepare_query = [WorldWondersPrepareQuery::class, 'call'];
+    $u->result_basic = [WorldWondersResultBasic::class, 'call'];
+    $u->result_body = [WorldWondersResultBody::class, 'call'];
+    $u->result_headers = [WorldWondersResultHeaders::class, 'call'];
+    $u->transform_request = [WorldWondersTransformRequest::class, 'call'];
+    $u->transform_response = [WorldWondersTransformResponse::class, 'call'];
+});

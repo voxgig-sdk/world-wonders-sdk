@@ -1,0 +1,245 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "World Wonders",
+    "description": "Free and open source API providing information about world wonders",
+    "version": "0.1.0",
+    "contact": {
+      "url": "https://www.world-wonders-api.org/v0/docs"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://www.world-wonders-api.org/v0",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/wonders": {
+      "get": {
+        "summary": "Get all world wonders",
+        "description": "Retrieves a list of all world wonders",
+        "operationId": "getAllWonders",
+        "tags": [
+          "Wonders"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of wonders to return",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Number of wonders to skip",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Wonder"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wonders/{id}": {
+      "get": {
+        "summary": "Get a specific world wonder by ID",
+        "description": "Retrieves detailed information about a specific world wonder",
+        "operationId": "getWonderById",
+        "tags": [
+          "Wonders"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Unique identifier of the world wonder",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Wonder"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Wonder not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Wonder": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the wonder"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the world wonder"
+          },
+          "summary": {
+            "type": "string",
+            "description": "Brief summary of the wonder"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "description": "Country where the wonder is located"
+              },
+              "city": {
+                "type": "string",
+                "description": "City where the wonder is located"
+              },
+              "continent": {
+                "type": "string",
+                "description": "Continent where the wonder is located"
+              },
+              "coordinates": {
+                "type": "object",
+                "properties": {
+                  "latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "longitude": {
+                    "type": "number",
+                    "format": "double"
+                  }
+                }
+              }
+            }
+          },
+          "build_year": {
+            "type": "integer",
+            "description": "Year the wonder was built"
+          },
+          "time_period": {
+            "type": "string",
+            "description": "Historical time period of the wonder"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "wiki": {
+                "type": "string",
+                "format": "uri",
+                "description": "Wikipedia link"
+              },
+              "britannica": {
+                "type": "string",
+                "format": "uri",
+                "description": "Britannica link"
+              },
+              "google_maps": {
+                "type": "string",
+                "format": "uri",
+                "description": "Google Maps link"
+              },
+              "trip_advisor": {
+                "type": "string",
+                "format": "uri",
+                "description": "TripAdvisor link"
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "status": {
+            "type": "integer",
+            "description": "HTTP status code"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Wonders",
+      "description": "Operations related to world wonders"
+    }
+  ]
+}

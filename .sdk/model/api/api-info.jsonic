@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://www.world-wonders-api.org/v0/docs"
+      }
+      description: "Free and open source API providing information about world wonders"
+      servers: [
+        {
+          description: "Production server"
+          url: "https://www.world-wonders-api.org/v0"
+        }
+      ]
+      title: "World Wonders"
+      version: "0.1.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,44 @@
+# BasicWonderFlow
+
+main: kit: flow: BasicWonderFlow:
+{
+  entity: "wonder",
+  kind: "basic",
+  name: "BasicWonderFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "wonder_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "wonder_ref01",
+        srcdatavar: "wonder_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "wonder01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-wonder_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWonderFlow"
+}

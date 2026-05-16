@@ -1,0 +1,17 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 1
+  metrics: count: path: 2
+  metrics: count: method: 2
+
+  entity: wonder: {
+    path: "/wonders": {
+      op: list: method: *GET
+    }
+    path: "/wonders/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+}

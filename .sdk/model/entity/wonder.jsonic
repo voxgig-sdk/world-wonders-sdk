@@ -1,0 +1,131 @@
+# Entity: wonder
+
+main: kit: entity: wonder: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "build_year"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "link"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "location"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "summary"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "time_period"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "wonder"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 10
+                kind: "query"
+                name: "limit"
+                orig: "limit"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "offset"
+                orig: "offset"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/wonders"
+          parts: [
+            "wonders"
+          ]
+          select: {
+            exist: [
+              "limit"
+              "offset"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/wonders/{id}"
+          parts: [
+            "wonders"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
