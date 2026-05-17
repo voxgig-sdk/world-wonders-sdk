@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/world-wonders-sdk/core"
+	"github.com/voxgig-sdk/world-wonders-sdk/go/core"
 )
 
 type BaseFeature struct {

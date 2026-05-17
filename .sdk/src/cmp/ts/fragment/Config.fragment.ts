@@ -29,7 +29,7 @@ class Config {
 
 
   options = {
-    base: 'https://www.world-wonders-api.org/v0',
+    base: '$$main.kit.info.servers.0.url$$',
 
     'AUTHBLOCK'headers: 'HEADERS',
 

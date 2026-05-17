@@ -1,10 +1,10 @@
 package voxgigworldwonderssdk
 
 import (
-	"github.com/voxgig-sdk/world-wonders-sdk/core"
-	"github.com/voxgig-sdk/world-wonders-sdk/entity"
-	"github.com/voxgig-sdk/world-wonders-sdk/feature"
-	_ "github.com/voxgig-sdk/world-wonders-sdk/utility"
+	"github.com/voxgig-sdk/world-wonders-sdk/go/core"
+	"github.com/voxgig-sdk/world-wonders-sdk/go/entity"
+	"github.com/voxgig-sdk/world-wonders-sdk/go/feature"
+	_ "github.com/voxgig-sdk/world-wonders-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

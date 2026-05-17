@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/world-wonders-sdk"
-	"github.com/voxgig-sdk/world-wonders-sdk/core"
+	sdk "github.com/voxgig-sdk/world-wonders-sdk/go"
+	"github.com/voxgig-sdk/world-wonders-sdk/go/core"
 )
 
 func TestWonderDirect(t *testing.T) {

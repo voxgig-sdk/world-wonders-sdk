@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/world-wonders-sdk/core"
+	"github.com/voxgig-sdk/world-wonders-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/world-wonders-sdk/go/utility/struct"
 )
 
 type WonderEntity struct {
