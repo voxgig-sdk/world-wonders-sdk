@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://www.world-wonders-api.org/v0',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
