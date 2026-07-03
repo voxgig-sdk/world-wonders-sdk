@@ -10,7 +10,7 @@ The TypeScript SDK for the WorldWonders API — a type-safe, entity-oriented cli
 
 ## Install
 ```bash
-npm install world-wonders
+npm install @voxgig-sdk/world-wonders
 ```
 ## Tutorial: your first API call
 

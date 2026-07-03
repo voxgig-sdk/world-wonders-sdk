@@ -10,7 +10,7 @@ The Python SDK for the WorldWonders API — an entity-oriented client following 
 
 ## Install
 ```bash
-pip install world-wonders-sdk
+pip install voxgig-sdk-world-wonders
 ```
 
 Or install from source:

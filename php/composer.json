@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/world-wonders",
-  "description": "WorldWonders SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the World Wonders public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "world-wonders"],
+  "homepage": "https://github.com/voxgig-sdk/world-wonders-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/world-wonders-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/world-wonders-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

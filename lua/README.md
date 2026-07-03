@@ -10,7 +10,7 @@ The Lua SDK for the WorldWonders API — an entity-oriented client using Lua con
 
 ## Install
 ```bash
-luarocks install world-wonders-sdk
+luarocks install voxgig-sdk-world-wonders
 ```
 
 If the module is not yet published, add the source directory to

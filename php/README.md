@@ -10,7 +10,7 @@ The PHP SDK for the WorldWonders API — an entity-oriented client using PHP con
 
 ## Install
 ```bash
-composer require voxgig/world-wonders-sdk
+composer require voxgig-sdk/world-wonders
 ```
 
 

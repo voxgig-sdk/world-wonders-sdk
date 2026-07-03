@@ -10,13 +10,13 @@ The Ruby SDK for the WorldWonders API — an entity-oriented client using idioma
 
 ## Install
 ```bash
-gem install world-wonders-sdk
+gem install voxgig-sdk-world-wonders
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "world-wonders-sdk"
+gem "voxgig-sdk-world-wonders"
 ```
 
 Then run:
