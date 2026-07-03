@@ -194,12 +194,14 @@ func wonderDirectSetup(mockres any) *wonderDirectSetupResult {
 	env := envOverride(map[string]any{
 		"WORLDWONDERS_TEST_WONDER_ENTID": map[string]any{},
 		"WORLDWONDERS_TEST_LIVE":    "FALSE",
+		"WORLDWONDERS_APIKEY":       "NONE",
 	})
 
 	live := env["WORLDWONDERS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["WORLDWONDERS_APIKEY"],
 		}
 		client := sdk.NewWorldWondersSDK(mergedOpts)
 

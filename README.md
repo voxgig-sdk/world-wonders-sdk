@@ -1,19 +1,8 @@
 # WorldWonders SDK
 
-Browse famous world wonders and their categories from a free, open-source REST API
+World Wonders client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About World Wonders
-
-World Wonders API is a small, free public API that returns information about notable wonders of the world. It is catalogued on [freepublicapis.com](https://freepublicapis.com/world-wonders) and served from `https://www.world-wonders-api.org/v0`.
-
-What you get from the API:
-
-- `GET /v0/wonders/` — list of world wonders
-- `GET /v0/wonders/categories` — the categories used to group wonders
-
-Operational notes: the public catalogue page reports CORS enabled on the main wonders endpoint and disabled on the categories endpoint. No authentication or rate-limit policy is documented on the pages reviewed.
 
 ## Try it
 
@@ -47,29 +36,31 @@ gem install world-wonders-sdk
 luarocks install world-wonders-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { WorldWondersSDK } from 'world-wonders'
 
-const client = new WorldWondersSDK({})
+const client = new WorldWondersSDK({
+  apikey: process.env.WORLD-WONDERS_APIKEY,
+})
 
 // List all wonders
 const wonders = await client.Wonder().list()
+console.log(wonders.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Wonder** | A single world wonder resource, listed and filtered through `/v0/wonders/` and grouped by the values returned from `/v0/wonders/categories`. | `/wonders` |
+| **Wonder** |  | `/wonders` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -109,17 +100,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from worldwonders_sdk import WorldWondersSDK
 
-client = WorldWondersSDK({})
+client = WorldWondersSDK({
+    "apikey": os.environ.get("WORLD-WONDERS_APIKEY"),
+})
 
 # List all wonders
-wonders, err = client.Wonder(None).list(None, None)
+wonders, err = client.Wonder().list()
+print(wonders)
 
 # Load a specific wonder
-wonder, err = client.Wonder(None).load(
-    {"id": "example_id"}, None
-)
+wonder, err = client.Wonder().load({"id": "example_id"})
+print(wonder)
 ```
 
 ### PHP
@@ -128,15 +122,17 @@ wonder, err = client.Wonder(None).load(
 <?php
 require_once 'worldwonders_sdk.php';
 
-$client = new WorldWondersSDK([]);
+$client = new WorldWondersSDK([
+    "apikey" => getenv("WORLD-WONDERS_APIKEY"),
+]);
 
 // List all wonders
-[$wonders, $err] = $client->Wonder(null)->list(null, null);
+[$wonders, $err] = $client->Wonder()->list();
+print_r($wonders);
 
 // Load a specific wonder
-[$wonder, $err] = $client->Wonder(null)->load(
-    ["id" => "example_id"], null
-);
+[$wonder, $err] = $client->Wonder()->load(["id" => "example_id"]);
+print_r($wonder);
 ```
 
 ### Golang
@@ -144,10 +140,13 @@ $client = new WorldWondersSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/world-wonders-sdk/go"
 
-client := sdk.NewWorldWondersSDK(map[string]any{})
+client := sdk.NewWorldWondersSDK(map[string]any{
+    "apikey": os.Getenv("WORLD-WONDERS_APIKEY"),
+})
 
 // List all wonders
 wonders, err := client.Wonder(nil).List(nil, nil)
+fmt.Println(wonders)
 ```
 
 ### Ruby
@@ -155,15 +154,17 @@ wonders, err := client.Wonder(nil).List(nil, nil)
 ```ruby
 require_relative "WorldWonders_sdk"
 
-client = WorldWondersSDK.new({})
+client = WorldWondersSDK.new({
+  "apikey" => ENV["WORLD-WONDERS_APIKEY"],
+})
 
 # List all wonders
-wonders, err = client.Wonder(nil).list(nil, nil)
+wonders, err = client.Wonder().list
+puts wonders
 
 # Load a specific wonder
-wonder, err = client.Wonder(nil).load(
-  { "id" => "example_id" }, nil
-)
+wonder, err = client.Wonder().load({ "id" => "example_id" })
+puts wonder
 ```
 
 ### Lua
@@ -171,15 +172,17 @@ wonder, err = client.Wonder(nil).load(
 ```lua
 local sdk = require("world-wonders_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("WORLD-WONDERS_APIKEY"),
+})
 
 -- List all wonders
-local wonders, err = client:Wonder(nil):list(nil, nil)
+local wonders, err = client:Wonder():list()
+print(wonders)
 
 -- Load a specific wonder
-local wonder, err = client:Wonder(nil):load(
-  { id = "example_id" }, nil
-)
+local wonder, err = client:Wonder():load({ id = "example_id" })
+print(wonder)
 ```
 
 ## Unit testing in offline mode
@@ -198,25 +201,21 @@ const result = await client.Wonder().load({ id: 'test01' })
 ### Python
 
 ```python
-client = WorldWondersSDK.test(None, None)
-result, err = client.Wonder(None).load(
-    {"id": "test01"}, None
-)
+client = WorldWondersSDK.test()
+result, err = client.Wonder().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = WorldWondersSDK::test(null, null);
-[$result, $err] = $client->Wonder(null)->load(
-    ["id" => "test01"], null
-);
+$client = WorldWondersSDK::test();
+[$result, $err] = $client->Wonder()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Wonder(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -225,19 +224,15 @@ result, err := client.Wonder(nil).Load(
 ### Ruby
 
 ```ruby
-client = WorldWondersSDK.test(nil, nil)
-result, err = client.Wonder(nil).load(
-  { "id" => "test01" }, nil
-)
+client = WorldWondersSDK.test
+result, err = client.Wonder().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Wonder(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Wonder():load({ id = "test01" })
 ```
 
 ## How it works
@@ -341,15 +336,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the World Wonders
-
-- Upstream: [https://www.world-wonders-api.org](https://www.world-wonders-api.org)
-- API docs: [https://www.world-wonders-api.org/v0/docs](https://www.world-wonders-api.org/v0/docs)
-
-- Described on freepublicapis.com as a free and open source API
-- No specific licence text is published on the listed pages — confirm with the maintainer before redistribution
-- No attribution requirements are documented
 
 ---
 

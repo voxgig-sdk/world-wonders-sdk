@@ -14,6 +14,9 @@ local function make_config()
     },
     options = {
       base = "https://www.world-wonders-api.org/v0",
+      auth = {
+        prefix = "Bearer",
+      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -25,80 +28,82 @@ local function make_config()
       ["wonder"] = {
         ["fields"] = {
           {
+            ["active"] = true,
             ["name"] = "build_year",
             ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["active"] = true,
             ["index$"] = 0,
           },
           {
+            ["active"] = true,
             ["name"] = "id",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 1,
           },
           {
+            ["active"] = true,
             ["name"] = "link",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["active"] = true,
             ["index$"] = 2,
           },
           {
+            ["active"] = true,
             ["name"] = "location",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["active"] = true,
             ["index$"] = 3,
           },
           {
+            ["active"] = true,
             ["name"] = "name",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 4,
           },
           {
+            ["active"] = true,
             ["name"] = "summary",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 5,
           },
           {
+            ["active"] = true,
             ["name"] = "time_period",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 6,
           },
         },
         ["name"] = "wonder",
         ["op"] = {
           ["list"] = {
+            ["input"] = "data",
             ["name"] = "list",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
+                      ["active"] = true,
                       ["example"] = 10,
                       ["kind"] = "query",
                       ["name"] = "limit",
                       ["orig"] = "limit",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = 0,
                       ["kind"] = "query",
                       ["name"] = "offset",
                       ["orig"] = "offset",
                       ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -117,26 +122,26 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "list",
           },
           ["load"] = {
+            ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
+                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "id",
                       ["orig"] = "id",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -155,11 +160,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "load",
           },
         },

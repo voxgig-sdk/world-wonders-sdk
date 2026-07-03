@@ -135,6 +135,7 @@ func wonderBasicSetup(extra map[string]any) *entityTestSetup {
 		"WORLDWONDERS_TEST_WONDER_ENTID": idmap,
 		"WORLDWONDERS_TEST_LIVE":      "FALSE",
 		"WORLDWONDERS_TEST_EXPLAIN":   "FALSE",
+		"WORLDWONDERS_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["WORLDWONDERS_TEST_WONDER_ENTID"])
@@ -145,6 +146,7 @@ func wonderBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["WORLDWONDERS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["WORLDWONDERS_APIKEY"],
 			},
 			extra,
 		})

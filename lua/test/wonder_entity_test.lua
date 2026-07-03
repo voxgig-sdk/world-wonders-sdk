@@ -102,6 +102,7 @@ function wonder_basic_setup(extra)
     ["WORLDWONDERS_TEST_WONDER_ENTID"] = idmap,
     ["WORLDWONDERS_TEST_LIVE"] = "FALSE",
     ["WORLDWONDERS_TEST_EXPLAIN"] = "FALSE",
+    ["WORLDWONDERS_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -113,6 +114,7 @@ function wonder_basic_setup(extra)
   if env["WORLDWONDERS_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["WORLDWONDERS_APIKEY"],
       },
       extra or {},
     })

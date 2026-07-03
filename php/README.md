@@ -1,6 +1,11 @@
 # WorldWonders PHP SDK
 
-The PHP SDK for the WorldWonders API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the WorldWonders API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'worldwonders_sdk.php';
 
-$client = new WorldWondersSDK([]);
+$client = new WorldWondersSDK([
+    "apikey" => getenv("WORLD-WONDERS_APIKEY"),
+]);
 ```
 
 ### 2. List wonders
 
 ```php
-[$result, $err] = $client->Wonder(null)->list(null, null);
+[$result, $err] = $client->Wonder()->list();
 if ($err) { throw new \Exception($err); }
 
 if (is_array($result)) {
@@ -40,7 +47,7 @@ if (is_array($result)) {
 ### 3. Load a wonder
 
 ```php
-[$result, $err] = $client->Wonder(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->Wonder()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -86,11 +93,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = WorldWondersSDK::test(null, null);
+$client = WorldWondersSDK::test();
 
-[$result, $err] = $client->WorldWonders(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->WorldWonders()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -125,6 +130,7 @@ Create a `.env.local` file at the project root:
 
 ```
 WORLD-WONDERS_TEST_LIVE=TRUE
+WORLD-WONDERS_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,6 +153,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

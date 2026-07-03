@@ -102,6 +102,7 @@ def _wonder_basic_setup(extra):
         "WORLDWONDERS_TEST_WONDER_ENTID": idmap,
         "WORLDWONDERS_TEST_LIVE": "FALSE",
         "WORLDWONDERS_TEST_EXPLAIN": "FALSE",
+        "WORLDWONDERS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -112,6 +113,7 @@ def _wonder_basic_setup(extra):
     if env.get("WORLDWONDERS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("WORLDWONDERS_APIKEY"),
             },
             extra or {},
         ])

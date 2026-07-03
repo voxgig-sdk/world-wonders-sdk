@@ -16,25 +16,7 @@ main: {
       ]
       title: "World Wonders"
       version: "0.1.0"
-      tagline: "Browse famous world wonders and their categories from a free, open-source REST API"
-      homepage: "https://www.world-wonders-api.org"
-      docs_url: "https://www.world-wonders-api.org/v0/docs"
-      license_short: "Free and open source"
-      license_md: `- Described on freepublicapis.com as a free and open source API
-- No specific licence text is published on the listed pages — confirm with the maintainer before redistribution
-- No attribution requirements are documented`
-      about_md: `World Wonders API is a small, free public API that returns information about notable wonders of the world. It is catalogued on [freepublicapis.com](https://freepublicapis.com/world-wonders) and served from \`https://www.world-wonders-api.org/v0\`.
-
-What you get from the API:
-
-- \`GET /v0/wonders/\` — list of world wonders
-- \`GET /v0/wonders/categories\` — the categories used to group wonders
-
-Operational notes: the public catalogue page reports CORS enabled on the main wonders endpoint and disabled on the categories endpoint. No authentication or rate-limit policy is documented on the pages reviewed.`
-      entity_desc: {
-        wonder: "A single world wonder resource, listed and filtered through `/v0/wonders/` and grouped by the values returned from `/v0/wonders/categories`."
-      }
-      auth: false
     }
   }
 }
+

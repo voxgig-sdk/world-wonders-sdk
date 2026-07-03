@@ -117,12 +117,14 @@ function wonder_direct_setup(mockres)
   local env = runner.env_override({
     ["WORLDWONDERS_TEST_WONDER_ENTID"] = {},
     ["WORLDWONDERS_TEST_LIVE"] = "FALSE",
+    ["WORLDWONDERS_APIKEY"] = "NONE",
   })
 
   local live = env["WORLDWONDERS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["WORLDWONDERS_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

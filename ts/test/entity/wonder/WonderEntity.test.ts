@@ -120,6 +120,7 @@ function basicSetup(extra?: any) {
     'WORLD_WONDERS_TEST_WONDER_ENTID': idmap,
     'WORLD_WONDERS_TEST_LIVE': 'FALSE',
     'WORLD_WONDERS_TEST_EXPLAIN': 'FALSE',
+    'WORLD_WONDERS_APIKEY': 'NONE',
   })
 
   idmap = env['WORLD_WONDERS_TEST_WONDER_ENTID']
@@ -129,6 +130,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new WorldWondersSDK(merge([
       {
+        apikey: env.WORLD_WONDERS_APIKEY,
       },
       extra
     ]))
