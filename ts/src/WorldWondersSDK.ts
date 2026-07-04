@@ -2,6 +2,8 @@
 
 import { WonderEntity } from './entity/WonderEntity'
 
+export type * from './WorldWondersTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class WorldWondersSDK {
 
 
 
+  _wonder?: WonderEntity
+
+  // Idiomatic facade: `client.wonder.list()` / `client.wonder.load({ id })`.
+  get wonder(): WonderEntity {
+    return (this._wonder ??= new WonderEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.wonder` instead. */
   Wonder(data?: any) {
     const self = this
     return new WonderEntity(self,data)

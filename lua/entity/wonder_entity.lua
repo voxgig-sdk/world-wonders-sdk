@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch WonderLoadMatch
+---@param ctrl? table
+---@return Wonder
+---@return string? err
 function WonderEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch WonderListMatch
+---@param ctrl? table
+---@return Wonder[]
+---@return string? err
 function WonderEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

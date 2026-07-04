@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -84,7 +83,7 @@ same parameters as `direct()`.
 ## WonderEntity
 
 ```lua
-local wonder = client:Wonder(nil)
+local wonder = client:wonder(nil)
 ```
 
 ### Fields
@@ -106,7 +105,7 @@ local wonder = client:Wonder(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Wonder():list()
+local results, err = client:wonder():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -114,7 +113,7 @@ local results, err = client:Wonder():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Wonder():load({ id = "wonder_id" })
+local result, err = client:wonder():load({ id = "wonder_id" })
 ```
 
 ### Common Methods

@@ -85,6 +85,27 @@ func (e *WonderEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Wonder; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *WonderEntity) DataTyped(data ...Wonder) Wonder {
+	if len(data) > 0 {
+		return typedFrom[Wonder](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Wonder](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Wonder (all fields
+// optional at the wire level).
+func (e *WonderEntity) MatchTyped(match ...Wonder) Wonder {
+	if len(match) > 0 {
+		return typedFrom[Wonder](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Wonder](e.Match())
+}
+
 
 func (e *WonderEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *WonderEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, 
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// WonderLoadMatch and returns an Wonder. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *WonderEntity) LoadTyped(reqmatch WonderLoadMatch, ctrl map[string]any) (Wonder, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Wonder{}, err
+	}
+	return typedFrom[Wonder](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *WonderEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, 
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// WonderListMatch and returns []Wonder. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *WonderEntity) ListTyped(reqmatch WonderListMatch, ctrl map[string]any) ([]Wonder, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Wonder](res), nil
 }
 
 

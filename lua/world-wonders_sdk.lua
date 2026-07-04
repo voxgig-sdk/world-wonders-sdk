@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:wonder():list() / client:wonder():load({ id = ... })
+function WorldWondersSDK:wonder(data)
+  local EntityMod = require("entity.wonder_entity")
+  if data == nil then
+    if self._wonder == nil then
+      self._wonder = EntityMod.new(self, nil)
+    end
+    return self._wonder
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:wonder() instead.
 function WorldWondersSDK:Wonder(data)
   local EntityMod = require("entity.wonder_entity")
   return EntityMod.new(self, data)

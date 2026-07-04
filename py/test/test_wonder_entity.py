@@ -50,16 +50,14 @@ class TestWonderEntity:
         wonder_ref01_ent = client.Wonder(None)
         wonder_ref01_match = {}
 
-        wonder_ref01_list_result, err = wonder_ref01_ent.list(wonder_ref01_match, None)
-        assert err is None
+        wonder_ref01_list_result = wonder_ref01_ent.list(wonder_ref01_match, None)
         assert isinstance(wonder_ref01_list_result, list)
 
         # LOAD
         wonder_ref01_match_dt0 = {
             "id": wonder_ref01_data["id"],
         }
-        wonder_ref01_data_dt0_loaded, err = wonder_ref01_ent.load(wonder_ref01_match_dt0, None)
-        assert err is None
+        wonder_ref01_data_dt0_loaded = wonder_ref01_ent.load(wonder_ref01_match_dt0, None)
         wonder_ref01_data_dt0_load_result = helpers.to_map(wonder_ref01_data_dt0_loaded)
         assert wonder_ref01_data_dt0_load_result is not None
         assert wonder_ref01_data_dt0_load_result["id"] == wonder_ref01_data["id"]
@@ -102,7 +100,6 @@ def _wonder_basic_setup(extra):
         "WORLDWONDERS_TEST_WONDER_ENTID": idmap,
         "WORLDWONDERS_TEST_LIVE": "FALSE",
         "WORLDWONDERS_TEST_EXPLAIN": "FALSE",
-        "WORLDWONDERS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _wonder_basic_setup(extra):
     if env.get("WORLDWONDERS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("WORLDWONDERS_APIKEY"),
             },
             extra or {},
         ])

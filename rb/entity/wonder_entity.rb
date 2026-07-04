@@ -45,6 +45,7 @@ class WonderEntity
     end
   end
 
+  # @return [Wonder, Hash] the current Wonder data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class WonderEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Wonder fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Wonder.
+  #
+  # @param reqmatch [WonderLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Wonder, Hash] the loaded Wonder; raises WorldWondersError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class WonderEntity
 
 
   
+  # List Wonder items matching the given filter.
+  #
+  # @param reqmatch [WonderListMatch, Hash, nil] match filter (any subset of Wonder fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Wonder>, Array] the matching Wonder items; raises WorldWondersError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

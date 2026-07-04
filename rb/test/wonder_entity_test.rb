@@ -43,16 +43,14 @@ class WonderEntityTest < Minitest::Test
     wonder_ref01_ent = client.Wonder(nil)
     wonder_ref01_match = {}
 
-    wonder_ref01_list_result, err = wonder_ref01_ent.list(wonder_ref01_match, nil)
-    assert_nil err
+    wonder_ref01_list_result = wonder_ref01_ent.list(wonder_ref01_match, nil)
     assert wonder_ref01_list_result.is_a?(Array)
 
     # LOAD
     wonder_ref01_match_dt0 = {
       "id" => wonder_ref01_data["id"],
     }
-    wonder_ref01_data_dt0_loaded, err = wonder_ref01_ent.load(wonder_ref01_match_dt0, nil)
-    assert_nil err
+    wonder_ref01_data_dt0_loaded = wonder_ref01_ent.load(wonder_ref01_match_dt0, nil)
     wonder_ref01_data_dt0_load_result = Helpers.to_map(wonder_ref01_data_dt0_loaded)
     assert !wonder_ref01_data_dt0_load_result.nil?
     assert_equal wonder_ref01_data_dt0_load_result["id"], wonder_ref01_data["id"]
@@ -93,7 +91,6 @@ def wonder_basic_setup(extra)
     "WORLDWONDERS_TEST_WONDER_ENTID" => idmap,
     "WORLDWONDERS_TEST_LIVE" => "FALSE",
     "WORLDWONDERS_TEST_EXPLAIN" => "FALSE",
-    "WORLDWONDERS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def wonder_basic_setup(extra)
   if env["WORLDWONDERS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["WORLDWONDERS_APIKEY"],
       },
       extra || {},
     ])

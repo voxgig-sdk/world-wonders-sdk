@@ -50,16 +50,14 @@ class WonderEntityTest extends TestCase
         $wonder_ref01_ent = $client->Wonder(null);
         $wonder_ref01_match = [];
 
-        [$wonder_ref01_list_result, $err] = $wonder_ref01_ent->list($wonder_ref01_match, null);
-        $this->assertNull($err);
+        $wonder_ref01_list_result = $wonder_ref01_ent->list($wonder_ref01_match, null);
         $this->assertIsArray($wonder_ref01_list_result);
 
         // LOAD
         $wonder_ref01_match_dt0 = [
             "id" => $wonder_ref01_data["id"],
         ];
-        [$wonder_ref01_data_dt0_loaded, $err] = $wonder_ref01_ent->load($wonder_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $wonder_ref01_data_dt0_loaded = $wonder_ref01_ent->load($wonder_ref01_match_dt0, null);
         $wonder_ref01_data_dt0_load_result = Helpers::to_map($wonder_ref01_data_dt0_loaded);
         $this->assertNotNull($wonder_ref01_data_dt0_load_result);
         $this->assertEquals($wonder_ref01_data_dt0_load_result["id"], $wonder_ref01_data["id"]);
@@ -96,7 +94,6 @@ function wonder_basic_setup($extra)
         "WORLDWONDERS_TEST_WONDER_ENTID" => $idmap,
         "WORLDWONDERS_TEST_LIVE" => "FALSE",
         "WORLDWONDERS_TEST_EXPLAIN" => "FALSE",
-        "WORLDWONDERS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function wonder_basic_setup($extra)
     if ($env["WORLDWONDERS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["WORLDWONDERS_APIKEY"],
             ],
             $extra ?? [],
         ]);

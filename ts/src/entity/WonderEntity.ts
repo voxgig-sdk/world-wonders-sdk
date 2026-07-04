@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Wonder,
+  WonderLoadMatch,
+  WonderListMatch,
+} from '../WorldWondersTypes'
 
 // TODO: needs Entity superclass
-class WonderEntity extends WorldWondersEntityBase {
+class WonderEntity extends WorldWondersEntityBase<Wonder> {
 
   constructor(client: WorldWondersSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class WonderEntity extends WorldWondersEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: WonderLoadMatch, ctrl?: Control): Promise<Wonder> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class WonderEntity extends WorldWondersEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Wonder> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: WonderListMatch, ctrl?: Control): Promise<Wonder[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class WonderEntity extends WorldWondersEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Wonder[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

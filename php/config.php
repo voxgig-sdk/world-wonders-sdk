@@ -20,9 +20,6 @@ class WorldWondersConfig
             ],
             "options" => [
                 "base" => "https://www.world-wonders-api.org/v0",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -148,6 +145,7 @@ class WorldWondersConfig
                         'orig' => 'id',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

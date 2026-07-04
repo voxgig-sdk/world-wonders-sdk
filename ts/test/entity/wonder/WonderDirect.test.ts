@@ -136,14 +136,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'WORLDWONDERS_TEST_WONDER_ENTID': {},
     'WORLDWONDERS_TEST_LIVE': 'FALSE',
-    'WORLDWONDERS_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.WORLDWONDERS_TEST_LIVE
 
   if (live) {
     const client = new WorldWondersSDK({
-      apikey: env.WORLDWONDERS_APIKEY,
     })
 
     let idmap: any = env['WORLDWONDERS_TEST_WONDER_ENTID']

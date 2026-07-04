@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -110,7 +109,7 @@ Alias for `WorldWondersSDK.test()`.
 ## WonderEntity
 
 ```ts
-const wonder = client.Wonder()
+const wonder = client.wonder
 ```
 
 ### Fields
@@ -132,7 +131,7 @@ const wonder = client.Wonder()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Wonder().list()
+const results = await client.wonder.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -140,7 +139,7 @@ const results = await client.Wonder().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Wonder().load({ id: 'wonder_id' })
+const result = await client.wonder.load({ id: 'wonder_id' })
 ```
 
 ### Common Methods

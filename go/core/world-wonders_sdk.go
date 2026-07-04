@@ -245,6 +245,9 @@ func (sdk *WorldWondersSDK) Direct(fetchargs map[string]any) (map[string]any, er
 }
 
 
+// Wonder returns a Wonder entity bound to this client.
+// Idiomatic usage: client.Wonder(nil).List(nil, nil) or
+// client.Wonder(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *WorldWondersSDK) Wonder(data map[string]any) WorldWondersEntity {
 	return NewWonderEntityFunc(sdk, data)
 }
