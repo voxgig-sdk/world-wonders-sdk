@@ -31,24 +31,28 @@ from worldwonders_sdk import WorldWondersSDK
 client = WorldWondersSDK()
 ```
 
-### 2. List wonders
+### 2. List wonder records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.wonder.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    wonders = client.Wonder().list({})
+    for wonder in wonders:
+        print(wonder)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a wonder
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.wonder.load({"id": "example_id"})
-    print(result)
+    wonder = client.Wonder().load({"id": "example_id"})
+    print(wonder)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = WorldWondersSDK.test()
 
-result = client.wonder.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+wonder = client.Wonder().load({"id": "test01"})
+# wonder contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -236,7 +241,7 @@ API path: `/wonders`
 
 ### Wonder
 
-Create an instance: `const wonder = client.wonder`
+Create an instance: `wonder = client.Wonder()`
 
 #### Operations
 
@@ -259,14 +264,14 @@ Create an instance: `const wonder = client.wonder`
 
 #### Example: Load
 
-```ts
-const wonder = await client.wonder.load({ id: 'wonder_id' })
+```python
+wonder = client.Wonder().load({"id": "wonder_id"})
 ```
 
 #### Example: List
 
-```ts
-const wonders = await client.wonder.list()
+```python
+wonders = client.Wonder().list({})
 ```
 
 
@@ -340,7 +345,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-wonder = client.wonder
+wonder = client.Wonder()
 wonder.load({"id": "example_id"})
 
 # wonder.data_get() now returns the loaded wonder data

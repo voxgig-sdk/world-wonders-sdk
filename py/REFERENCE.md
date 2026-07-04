@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## WonderEntity
 
 ```python
-wonder = client.wonder
+wonder = client.Wonder()
 ```
 
 ### Fields
@@ -102,7 +102,9 @@ wonder = client.wonder
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.wonder.list({})
+results = client.Wonder().list({})
+for wonder in results:
+    print(wonder)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -110,7 +112,7 @@ results = client.wonder.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.wonder.load({"id": "wonder_id"})
+result = client.Wonder().load({"id": "wonder_id"})
 ```
 
 ### Common Methods

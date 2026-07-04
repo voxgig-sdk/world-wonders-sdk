@@ -28,16 +28,14 @@ require_relative "WorldWonders_sdk"
 client = WorldWondersSDK.new
 ```
 
-### 2. List wonders
+### 2. List wonder records
 
 ```ruby
 begin
-  result = client.wonder.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Wonder records — iterate directly.
+  wonders = client.Wonder.list
+  wonders.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.wonder.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Wonder record (raises on error).
+  wonder = client.Wonder.load({ "id" => "example_id" })
+  puts wonder
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = WorldWondersSDK.test
+client = WorldWondersSDK.test({
+  "entity" => { "wonder" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.wonder.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+wonder = client.Wonder.load({ "id" => "test01" })
+puts wonder
 ```
 
 ### Use a custom fetch function
@@ -240,7 +243,7 @@ API path: `/wonders`
 
 ### Wonder
 
-Create an instance: `const wonder = client.wonder`
+Create an instance: `wonder = client.Wonder`
 
 #### Operations
 
@@ -263,14 +266,16 @@ Create an instance: `const wonder = client.wonder`
 
 #### Example: Load
 
-```ts
-const wonder = await client.wonder.load({ id: 'wonder_id' })
+```ruby
+# load returns the bare Wonder record (raises on error).
+wonder = client.Wonder.load({ "id" => "wonder_id" })
 ```
 
 #### Example: List
 
-```ts
-const wonders = await client.wonder.list()
+```ruby
+# list returns an Array of Wonder records (raises on error).
+wonders = client.Wonder.list
 ```
 
 
@@ -345,7 +350,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-wonder = client.wonder
+wonder = client.Wonder
 wonder.load({ "id" => "example_id" })
 
 # wonder.data_get now returns the loaded wonder data

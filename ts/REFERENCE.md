@@ -109,7 +109,7 @@ Alias for `WorldWondersSDK.test()`.
 ## WonderEntity
 
 ```ts
-const wonder = client.wonder
+const wonder = client.Wonder()
 ```
 
 ### Fields
@@ -131,7 +131,7 @@ const wonder = client.wonder
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.wonder.list()
+const results = await client.Wonder().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -139,7 +139,7 @@ const results = await client.wonder.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.wonder.load({ id: 'wonder_id' })
+const result = await client.Wonder().load({ id: 'wonder_id' })
 ```
 
 ### Common Methods

@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## WonderEntity
 
 ```lua
-local wonder = client:wonder(nil)
+local wonder = client:Wonder(nil)
 ```
 
 ### Fields
@@ -105,7 +105,7 @@ local wonder = client:wonder(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:wonder():list()
+local results, err = client:Wonder():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -113,7 +113,7 @@ local results, err = client:wonder():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:wonder():load({ id = "wonder_id" })
+local result, err = client:Wonder():load({ id = "wonder_id" })
 ```
 
 ### Common Methods

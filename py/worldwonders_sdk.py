@@ -220,25 +220,15 @@ class WorldWondersSDK:
         }
 
 
-    @property
-    def wonder(self):
-        """Idiomatic facade: client.wonder.list() / client.wonder.load({"id": ...})."""
-        from entity.wonder_entity import WonderEntity
-        cached = getattr(self, "_wonder", None)
-        if cached is None:
-            cached = WonderEntity(self, None)
-            self._wonder = cached
-        return cached
-
-    def Wonder(self, data=None):
-        # Deprecated: use client.wonder instead.
+    def Wonder(self, data=None) -> "WonderEntity":
+        """Entity factory: client.Wonder().list({}) / client.Wonder().load({"id": ...})."""
         from entity.wonder_entity import WonderEntity
         return WonderEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "WorldWondersSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class WorldWondersSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.wonder_entity import WonderEntity

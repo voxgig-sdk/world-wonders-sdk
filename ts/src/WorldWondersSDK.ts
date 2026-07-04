@@ -204,14 +204,7 @@ class WorldWondersSDK {
 
 
 
-  _wonder?: WonderEntity
-
-  // Idiomatic facade: `client.wonder.list()` / `client.wonder.load({ id })`.
-  get wonder(): WonderEntity {
-    return (this._wonder ??= new WonderEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.wonder` instead. */
+  // Entity access: `client.Wonder().list()` / `client.Wonder().load({ id })`.
   Wonder(data?: any) {
     const self = this
     return new WonderEntity(self,data)

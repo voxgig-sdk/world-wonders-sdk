@@ -85,7 +85,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## WonderEntity
 
 ```php
-$wonder = $client->wonder();
+$wonder = $client->Wonder();
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ $wonder = $client->wonder();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->wonder()->list([]);
+$results = $client->Wonder()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -115,7 +115,7 @@ $results = $client->wonder()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->wonder()->load(["id" => "wonder_id"]);
+$result = $client->Wonder()->load(["id" => "wonder_id"]);
 ```
 
 ### Common Methods

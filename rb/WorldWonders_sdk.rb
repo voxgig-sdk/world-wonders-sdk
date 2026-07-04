@@ -208,13 +208,7 @@ class WorldWondersSDK
   end
 
 
-  # Idiomatic facade: client.wonder.list / client.wonder.load({ "id" => ... })
-  def wonder
-    require_relative 'entity/wonder_entity'
-    @wonder ||= WonderEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.wonder instead.
+  # Canonical facade: client.Wonder.list / client.Wonder.load({ "id" => ... })
   def Wonder(data = nil)
     require_relative 'entity/wonder_entity'
     WonderEntity.new(self, data)

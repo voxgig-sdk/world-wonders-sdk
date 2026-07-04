@@ -233,10 +233,10 @@ class WorldWondersSDK
 
     private $_wonder = null;
 
-    // Idiomatic facade: $client->wonder()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Wonder() (PHP method
-    // names are case-insensitive).
-    public function wonder($data = null)
+    // Canonical facade: $client->Wonder()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->wonder()
+    // resolves here too.
+    public function Wonder($data = null)
     {
         require_once __DIR__ . '/entity/wonder_entity.php';
         if ($data === null) {

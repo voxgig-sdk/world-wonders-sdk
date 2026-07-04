@@ -26,9 +26,11 @@ import { WorldWondersSDK } from '@voxgig-sdk/world-wonders'
 
 const client = new WorldWondersSDK()
 
-// List all wonders
-const wonders = await client.wonder.list()
-console.log(wonders.data)
+// List all wonders (returns Wonder[])
+const wonders = await client.Wonder().list()
+for (const wonder of wonders) {
+  console.log(wonder)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -83,12 +85,13 @@ from worldwonders_sdk import WorldWondersSDK
 
 client = WorldWondersSDK()
 
-# List all wonders
-wonders = client.wonder.list()
-print(wonders)
+# List all wonders (returns a list, raises on error)
+wonders = client.Wonder().list({})
+for wonder in wonders:
+    print(wonder)
 
-# Load a specific wonder
-wonder = client.wonder.load({"id": "example_id"})
+# Load a specific wonder (returns the record, raises on error)
+wonder = client.Wonder().load({"id": "example_id"})
 print(wonder)
 ```
 
@@ -100,12 +103,12 @@ require_once 'worldwonders_sdk.php';
 
 $client = new WorldWondersSDK();
 
-// List all wonders (throws on error)
-$wonders = $client->wonder()->list();
+// List all wonders (returns an array; throws on error)
+$wonders = $client->Wonder()->list();
 print_r($wonders);
 
-// Load a specific wonder
-$wonder = $client->wonder()->load(["id" => "example_id"]);
+// Load a specific wonder (returns the bare record; throws on error)
+$wonder = $client->Wonder()->load(["id" => "example_id"]);
 print_r($wonder);
 ```
 
@@ -128,12 +131,12 @@ require_relative "WorldWonders_sdk"
 
 client = WorldWondersSDK.new
 
-# List all wonders
-wonders = client.wonder.list
+# List all wonders (returns an Array; raises on error)
+wonders = client.Wonder.list
 puts wonders
 
-# Load a specific wonder
-wonder = client.wonder.load({ "id" => "example_id" })
+# Load a specific wonder (returns the bare record; raises on error)
+wonder = client.Wonder.load({ "id" => "example_id" })
 puts wonder
 ```
 
@@ -145,11 +148,11 @@ local sdk = require("world-wonders_sdk")
 local client = sdk.new()
 
 -- List all wonders
-local wonders, err = client:wonder():list()
+local wonders, err = client:Wonder():list()
 print(wonders)
 
 -- Load a specific wonder
-local wonder, err = client:wonder():load({ id = "example_id" })
+local wonder, err = client:Wonder():load({ id = "example_id" })
 print(wonder)
 ```
 
@@ -162,22 +165,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = WorldWondersSDK.test()
-const result = await client.wonder.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const wonder = await client.Wonder().load({ id: 'test01' })
+// wonder is a bare Wonder populated with mock data
+console.log(wonder)
 ```
 
 ### Python
 
 ```python
 client = WorldWondersSDK.test()
-result = client.wonder.load({"id": "test01"})
+wonder = client.Wonder().load({"id": "test01"})
+print(wonder)
 ```
 
 ### PHP
 
 ```php
-$client = WorldWondersSDK::test();
-$result = $client->wonder()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = WorldWondersSDK::test([
+    "entity" => ["wonder" => ["test01" => ["id" => "test01"]]],
+]);
+$wonder = $client->Wonder()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -192,15 +200,18 @@ result, err := client.Wonder(nil).Load(
 ### Ruby
 
 ```ruby
-client = WorldWondersSDK.test
-result = client.wonder.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = WorldWondersSDK.test({
+  "entity" => { "wonder" => { "test01" => { "id" => "test01" } } },
+})
+wonder = client.Wonder.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:wonder():load({ id = "test01" })
+local result, err = client:Wonder():load({ id = "test01" })
 ```
 
 ## How it works
@@ -248,6 +259,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

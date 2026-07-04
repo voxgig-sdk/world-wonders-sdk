@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## WonderEntity
 
 ```ruby
-wonder = client.wonder
+wonder = client.Wonder
 ```
 
 ### Fields
@@ -108,7 +108,7 @@ wonder = client.wonder
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.wonder.list(nil)
+results = client.Wonder.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -116,7 +116,7 @@ results = client.wonder.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.wonder.load({ "id" => "wonder_id" })
+result = client.Wonder.load({ "id" => "wonder_id" })
 ```
 
 ### Common Methods

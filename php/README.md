@@ -29,18 +29,16 @@ require_once 'worldwonders_sdk.php';
 $client = new WorldWondersSDK();
 ```
 
-### 2. List wonders
+### 2. List wonder records
 
 ```php
 try {
-    $result = $client->wonder()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Wonder records — iterate directly.
+    $wonders = $client->Wonder()->list();
+    foreach ($wonders as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->wonder()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Wonder record (throws on error).
+    $wonder = $client->Wonder()->load(["id" => "example_id"]);
+    print_r($wonder);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = WorldWondersSDK::test();
+$client = WorldWondersSDK::test([
+    "entity" => ["wonder" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->wonder()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$wonder = $client->Wonder()->load(["id" => "test01"]);
+print_r($wonder);
 ```
 
 ### Use a custom fetch function
@@ -245,7 +248,7 @@ API path: `/wonders`
 
 ### Wonder
 
-Create an instance: `const wonder = client.wonder`
+Create an instance: `$wonder = $client->Wonder();`
 
 #### Operations
 
@@ -268,14 +271,16 @@ Create an instance: `const wonder = client.wonder`
 
 #### Example: Load
 
-```ts
-const wonder = await client.wonder.load({ id: 'wonder_id' })
+```php
+// load() returns the bare Wonder record (throws on error).
+$wonder = $client->Wonder()->load(["id" => "wonder_id"]);
 ```
 
 #### Example: List
 
-```ts
-const wonders = await client.wonder.list()
+```php
+// list() returns an array of Wonder records (throws on error).
+$wonders = $client->Wonder()->list();
 ```
 
 
@@ -350,7 +355,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$wonder = $client->wonder();
+$wonder = $client->Wonder();
 $wonder->load(["id" => "example_id"]);
 
 // $wonder->dataGet() now returns the loaded wonder data
