@@ -8,7 +8,7 @@ Complete API reference for the WorldWonders Python SDK.
 ### Constructor
 
 ```python
-from world-wonders_sdk import WorldWondersSDK
+from worldwonders_sdk import WorldWondersSDK
 
 client = WorldWondersSDK(options)
 ```
@@ -87,22 +87,22 @@ wonder = client.Wonder()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `build_year` | ``$INTEGER`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `location` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `summary` | ``$STRING`` | No |  |
-| `time_period` | ``$STRING`` | No |  |
+| `build_year` | `int` | No |  |
+| `id` | `str` | No |  |
+| `link` | `dict` | No |  |
+| `location` | `dict` | No |  |
+| `name` | `str` | No |  |
+| `summary` | `str` | No |  |
+| `time_period` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Wonder().list({})
+results = client.Wonder().list()
 for wonder in results:
     print(wonder)
 ```

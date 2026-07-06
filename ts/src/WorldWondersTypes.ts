@@ -19,5 +19,13 @@ export interface WonderLoadMatch {
   id: string
 }
 
-export type WonderListMatch = Partial<Wonder>
+export interface WonderListMatch {
+  build_year?: number
+  id?: string
+  link?: Record<string, any>
+  location?: Record<string, any>
+  name?: string
+  summary?: string
+  time_period?: string
+}
 

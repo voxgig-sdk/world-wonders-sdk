@@ -4,6 +4,8 @@
 
 The Lua SDK for the WorldWonders API — an entity-oriented client using Lua conventions.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client:Wonder()` — each with the same small set of operations (`list`, `load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -54,6 +56,28 @@ print(wonder)
 ```
 
 
+## Error handling
+
+Entity operations return `(value, err)`. Check `err` before using
+the value:
+
+```lua
+local wonders, err = client:Wonder():list()
+if err then error(err) end
+```
+
+`direct` follows the same `(value, err)` convention:
+
+```lua
+local result, err = client:direct({
+  path = "/api/resource/{id}",
+  method = "GET",
+  params = { id = "example_id" },
+})
+if err then error(err) end
+```
+
+
 ## How-to guides
 
 ### Make a direct HTTP request
@@ -96,8 +120,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Wonder():load({ id = "test01" })
--- result is the loaded data; err is set on failure
+local result, err = client:Wonder():list()
+-- result is the returned data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -185,9 +209,6 @@ All entities share the same interface.
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any, err` | Load a single entity by match criteria. |
 | `list` | `(reqmatch, ctrl) -> any, err` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> any, err` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> any, err` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> any, err` | Remove an entity. |
 | `data_get` | `() -> table` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> table` | Get entity match criteria. |
@@ -202,7 +223,7 @@ data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `load` | the entity record (a `table`) |
 | `list` | an array (`table`) of entity records |
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
@@ -252,13 +273,13 @@ Create an instance: `local wonder = client:Wonder(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `build_year` | ``$INTEGER`` |  |
-| `id` | ``$STRING`` |  |
-| `link` | ``$OBJECT`` |  |
-| `location` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `summary` | ``$STRING`` |  |
-| `time_period` | ``$STRING`` |  |
+| `build_year` | `number` |  |
+| `id` | `string` |  |
+| `link` | `table` |  |
+| `location` | `table` |  |
+| `name` | `string` |  |
+| `summary` | `string` |  |
+| `time_period` | `string` |  |
 
 #### Example: Load
 
@@ -273,12 +294,16 @@ local wonders, err = client:Wonder():list()
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -295,8 +320,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -340,14 +366,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
 local wonder = client:Wonder()
-wonder:load({ id = "example_id" })
+wonder:list()
 
--- wonder:data_get() now returns the loaded wonder data
+-- wonder:data_get() now returns the wonder data from the last list
 -- wonder:match_get() returns the last match criteria
 ```
 

@@ -97,13 +97,13 @@ wonder := client.Wonder(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `build_year` | ``$INTEGER`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `location` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `summary` | ``$STRING`` | No |  |
-| `time_period` | ``$STRING`` | No |  |
+| `build_year` | `int` | No |  |
+| `id` | `string` | No |  |
+| `link` | `map[string]any` | No |  |
+| `location` | `map[string]any` | No |  |
+| `name` | `string` | No |  |
+| `summary` | `string` | No |  |
+| `time_period` | `string` | No |  |
 
 ### Operations
 

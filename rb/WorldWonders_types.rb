@@ -50,7 +50,7 @@ WonderLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Wonder#list (any subset of Wonder fields).
+# Request payload for Wonder#list.
 #
 # @!attribute [rw] build_year
 #   @return [Integer, nil]

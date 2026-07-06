@@ -8,7 +8,7 @@ Complete API reference for the WorldWonders Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'world-wonders_sdk'
+require_relative 'WorldWonders_sdk'
 
 client = WorldWondersSDK.new(options)
 ```
@@ -93,22 +93,22 @@ wonder = client.Wonder
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `build_year` | ``$INTEGER`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `location` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `summary` | ``$STRING`` | No |  |
-| `time_period` | ``$STRING`` | No |  |
+| `build_year` | `Integer` | No |  |
+| `id` | `String` | No |  |
+| `link` | `Hash` | No |  |
+| `location` | `Hash` | No |  |
+| `name` | `String` | No |  |
+| `summary` | `String` | No |  |
+| `time_period` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Wonder.list(nil)
+results = client.Wonder.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

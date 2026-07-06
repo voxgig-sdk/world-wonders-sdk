@@ -116,13 +116,13 @@ const wonder = client.Wonder()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `build_year` | ``$INTEGER`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `location` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `summary` | ``$STRING`` | No |  |
-| `time_period` | ``$STRING`` | No |  |
+| `build_year` | `number` | No |  |
+| `id` | `string` | No |  |
+| `link` | `Record<string, any>` | No |  |
+| `location` | `Record<string, any>` | No |  |
+| `name` | `string` | No |  |
+| `summary` | `string` | No |  |
+| `time_period` | `string` | No |  |
 
 ### Operations
 

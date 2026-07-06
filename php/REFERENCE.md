@@ -8,7 +8,7 @@ Complete API reference for the WorldWonders PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/world-wonders_sdk.php';
+require_once __DIR__ . '/worldwonders_sdk.php';
 
 $client = new WorldWondersSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = WorldWondersSDK::test();
 
 Create a new `WonderEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): WorldWondersUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,22 +92,22 @@ $wonder = $client->Wonder();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `build_year` | ``$INTEGER`` | No |  |
-| `id` | ``$STRING`` | No |  |
-| `link` | ``$OBJECT`` | No |  |
-| `location` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `summary` | ``$STRING`` | No |  |
-| `time_period` | ``$STRING`` | No |  |
+| `build_year` | `int` | No |  |
+| `id` | `string` | No |  |
+| `link` | `array` | No |  |
+| `location` | `array` | No |  |
+| `name` | `string` | No |  |
+| `summary` | `string` | No |  |
+| `time_period` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Wonder()->list([]);
+$results = $client->Wonder()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -120,19 +120,19 @@ $result = $client->Wonder()->load(["id" => "wonder_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -141,7 +141,7 @@ Set the entity match criteria.
 Create a new `WonderEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

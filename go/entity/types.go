@@ -24,8 +24,7 @@ type WonderLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// WonderListMatch mirrors the wonder fields as an all-optional match
-// filter (Go analog of Partial<Wonder>).
+// WonderListMatch is the typed request payload for Wonder.ListTyped.
 type WonderListMatch struct {
 	BuildYear *int `json:"build_year,omitempty"`
 	Id *string `json:"id,omitempty"`

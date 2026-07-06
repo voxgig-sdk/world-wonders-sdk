@@ -30,7 +30,7 @@ class WonderLoadMatch
     public string $id;
 }
 
-/** Match filter for Wonder#list (any subset of Wonder fields). */
+/** Request payload for Wonder#list. */
 class WonderListMatch
 {
     public ?int $build_year = null;

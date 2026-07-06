@@ -221,7 +221,7 @@ class WorldWondersSDK:
 
 
     def Wonder(self, data=None) -> "WonderEntity":
-        """Entity factory: client.Wonder().list({}) / client.Wonder().load({"id": ...})."""
+        """Entity factory: client.Wonder().list() / client.Wonder().load({"id": ...})."""
         from entity.wonder_entity import WonderEntity
         return WonderEntity(self, data)
 
