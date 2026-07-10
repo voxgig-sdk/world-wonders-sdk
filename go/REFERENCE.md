@@ -91,6 +91,7 @@ same parameters as `Direct()`.
 
 ```go
 wonder := client.Wonder(nil)
+fmt.Println(wonder.GetName()) // "wonder"
 ```
 
 ### Fields
@@ -113,6 +114,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Wonder(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -121,6 +126,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Wonder(nil).Load(map[string]any{"id": "wonder_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

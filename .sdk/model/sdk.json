@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -314,14 +311,17 @@
           "url": "https://www.world-wonders-api.org/v0/docs"
         },
         "description": "Free and open source API providing information about world wonders",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://www.world-wonders-api.org/v0"
           }
         ],
+        "summary": "Free and open source API providing information about world wonders",
         "title": "World Wonders",
-        "version": "0.1.0"
+        "version": "0.1.0",
+        "website": "https://world-wonders-api.org"
       },
       "option": {},
       "target": {
@@ -374,6 +374,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -424,6 +427,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

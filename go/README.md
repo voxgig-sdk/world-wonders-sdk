@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single wonder — the value is the loaded record.
-    wonder, err := client.Wonder(nil).Load(map[string]any{"id": "example"}, nil)
+    wonder, err := client.Wonder(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }

@@ -15,9 +15,9 @@ main: {
           url: "https://www.world-wonders-api.org/v0"
         }
       ]
+      summary: "Free and open source API providing information about world wonders"
       title: "World Wonders"
       version: "0.1.0"
+      website: "https://world-wonders-api.org"
     }
   }
-}
-
