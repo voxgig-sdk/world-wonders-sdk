@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- WorldWonders SDK exists test
 
 local sdk = require("world-wonders_sdk")
 
