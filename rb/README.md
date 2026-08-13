@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Wonder record (raises on error).
+  # load returns the ENTITY — call data_get for the Wonder record (raises on error).
   wonder = client.Wonder.load({ "id" => "example_id" })
   puts wonder
 rescue => err
@@ -134,7 +134,8 @@ client = WorldWondersSDK.test({
   "entity" => { "wonder" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 wonder = client.Wonder.list()
 puts wonder
 ```
@@ -254,7 +255,7 @@ returns a result `Hash` with these keys:
 | --- | --- |
 | `build_year` |  |
 | `id` |  |
-| `link` |  |
+| `links` |  |
 | `location` |  |
 | `name` |  |
 | `summary` |  |
@@ -286,7 +287,7 @@ Create an instance: `wonder = client.Wonder`
 | --- | --- | --- |
 | `build_year` | `Integer` |  |
 | `id` | `String` |  |
-| `link` | `Hash` |  |
+| `links` | `Hash` |  |
 | `location` | `Hash` |  |
 | `name` | `String` |  |
 | `summary` | `String` |  |
@@ -295,7 +296,7 @@ Create an instance: `wonder = client.Wonder`
 #### Example: Load
 
 ```ruby
-# load returns the bare Wonder record (raises on error).
+# load returns the ENTITY — call data_get for the Wonder record (raises on error).
 wonder = client.Wonder.load({ "id" => "wonder_id" })
 ```
 

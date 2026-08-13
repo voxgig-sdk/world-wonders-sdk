@@ -46,7 +46,7 @@ class WorldWondersConfig
             ],
             [
               'active' => true,
-              'name' => 'link',
+              'name' => 'links',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 2,
@@ -110,6 +110,7 @@ class WorldWondersConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/wonders',
                   'parts' => [
@@ -149,6 +150,7 @@ class WorldWondersConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/wonders/{id}',
                   'parts' => [

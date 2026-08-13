@@ -243,7 +243,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | --- | --- |
 | `build_year` |  |
 | `id` |  |
-| `link` |  |
+| `links` |  |
 | `location` |  |
 | `name` |  |
 | `summary` |  |
@@ -275,7 +275,7 @@ Create an instance: `local wonder = client:Wonder(nil)`
 | --- | --- | --- |
 | `build_year` | `number` |  |
 | `id` | `string` |  |
-| `link` | `table` |  |
+| `links` | `table` |  |
 | `location` | `table` |  |
 | `name` | `string` |  |
 | `summary` | `string` |  |

@@ -271,7 +271,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | --- | --- |
 | `"build_year"` |  |
 | `"id"` |  |
-| `"link"` |  |
+| `"links"` |  |
 | `"location"` |  |
 | `"name"` |  |
 | `"summary"` |  |
@@ -303,7 +303,7 @@ Create an instance: `wonder := client.Wonder(nil)`
 | --- | --- | --- |
 | `build_year` | `int` |  |
 | `id` | `string` |  |
-| `link` | `map[string]any` |  |
+| `links` | `map[string]any` |  |
 | `location` | `map[string]any` |  |
 | `name` | `string` |  |
 | `summary` | `string` |  |

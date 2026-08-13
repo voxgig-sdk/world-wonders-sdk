@@ -16,11 +16,11 @@
 import pytest
 
 from worldwonders_sdk import WorldWondersSDK
-from core.error import WorldWondersError
-from core.result import WorldWondersResult
-from core.response import WorldWondersResponse
-from core.spec import WorldWondersSpec
-from feature.base_feature import WorldWondersBaseFeature
+from worldwonders_sdk.core.error import WorldWondersError
+from worldwonders_sdk.core.result import WorldWondersResult
+from worldwonders_sdk.core.response import WorldWondersResponse
+from worldwonders_sdk.core.spec import WorldWondersSpec
+from worldwonders_sdk.feature.base_feature import WorldWondersBaseFeature
 
 
 def _client():

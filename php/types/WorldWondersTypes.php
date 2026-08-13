@@ -17,7 +17,7 @@ class Wonder
 {
     public ?int $build_year = null;
     public ?string $id = null;
-    public ?array $link = null;
+    public ?array $links = null;
     public ?array $location = null;
     public ?string $name = null;
     public ?string $summary = null;
@@ -35,7 +35,7 @@ class WonderListMatch
 {
     public ?int $build_year = null;
     public ?string $id = null;
-    public ?array $link = null;
+    public ?array $links = null;
     public ?array $location = null;
     public ?string $name = null;
     public ?string $summary = null;

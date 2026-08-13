@@ -35,7 +35,9 @@ const client = new WorldWondersSDK()
 
 ### 2. List wonder records
 
-`list()` resolves to an array of Wonder objects — iterate it directly:
+`list()` resolves to an array of Wonder ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const wonders = await client.Wonder().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = WorldWondersSDK.test()
 
 const wonder = await client.Wonder().list()
-// wonder is a bare entity populated with mock response data
+// wonder is the entity, populated with mock response data
+// — call wonder.data() for the record itself
 console.log(wonder)
 ```
 
@@ -301,7 +304,7 @@ The `prepare()` method returns:
 | --- | --- |
 | `build_year` |  |
 | `id` |  |
-| `link` |  |
+| `links` |  |
 | `location` |  |
 | `name` |  |
 | `summary` |  |
@@ -333,7 +336,7 @@ Create an instance: `const wonder = client.Wonder()`
 | --- | --- | --- |
 | `build_year` | `number` |  |
 | `id` | `string` |  |
-| `link` | `Record<string, any>` |  |
+| `links` | `Record<string, any>` |  |
 | `location` | `Record<string, any>` |  |
 | `name` | `string` |  |
 | `summary` | `string` |  |

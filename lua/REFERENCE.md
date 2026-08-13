@@ -92,7 +92,7 @@ local wonder = client:Wonder(nil)
 | --- | --- | --- | --- |
 | `build_year` | `number` | No |  |
 | `id` | `string` | No |  |
-| `link` | `table` | No |  |
+| `links` | `table` | No |  |
 | `location` | `table` | No |  |
 | `name` | `string` | No |  |
 | `summary` | `string` | No |  |

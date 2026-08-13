@@ -114,11 +114,11 @@ def wonder_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "WORLDWONDERS_TEST_WONDER_ENTID" => {},
-    "WORLDWONDERS_TEST_LIVE" => "FALSE",
+    "WORLD_WONDERS_TEST_WONDER_ENTID" => {},
+    "WORLD_WONDERS_TEST_LIVE" => "FALSE",
   })
 
-  live = env["WORLDWONDERS_TEST_LIVE"] == "TRUE"
+  live = env["WORLD_WONDERS_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

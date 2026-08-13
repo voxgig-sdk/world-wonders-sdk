@@ -118,7 +118,7 @@ const wonder = client.Wonder()
 | --- | --- | --- | --- |
 | `build_year` | `number` | No |  |
 | `id` | `string` | No |  |
-| `link` | `Record<string, any>` | No |  |
+| `links` | `Record<string, any>` | No |  |
 | `location` | `Record<string, any>` | No |  |
 | `name` | `string` | No |  |
 | `summary` | `string` | No |  |

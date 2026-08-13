@@ -92,7 +92,7 @@ func TestWonderEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set WORLDWONDERS_TEST_WONDER_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set WORLD_WONDERS_TEST_WONDER_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -128,7 +128,7 @@ func TestWonderEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		wonderRef01DataDt0LoadResult := core.ToMapAny(wonderRef01DataDt0Loaded)
+		wonderRef01DataDt0LoadResult := core.ToMapAny(entityData(wonderRef01DataDt0Loaded))
 		if wonderRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}
@@ -176,21 +176,21 @@ func wonderBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("WORLDWONDERS_TEST_WONDER_ENTID")
+	entidEnvRaw := os.Getenv("WORLD_WONDERS_TEST_WONDER_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"WORLDWONDERS_TEST_WONDER_ENTID": idmap,
-		"WORLDWONDERS_TEST_LIVE":      "FALSE",
-		"WORLDWONDERS_TEST_EXPLAIN":   "FALSE",
+		"WORLD_WONDERS_TEST_WONDER_ENTID": idmap,
+		"WORLD_WONDERS_TEST_LIVE":      "FALSE",
+		"WORLD_WONDERS_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["WORLDWONDERS_TEST_WONDER_ENTID"])
+	idmapResolved := core.ToMapAny(env["WORLD_WONDERS_TEST_WONDER_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["WORLDWONDERS_TEST_LIVE"] == "TRUE" {
+	if env["WORLD_WONDERS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -199,13 +199,13 @@ func wonderBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewWorldWondersSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["WORLDWONDERS_TEST_LIVE"] == "TRUE"
+	live := env["WORLD_WONDERS_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["WORLDWONDERS_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["WORLD_WONDERS_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

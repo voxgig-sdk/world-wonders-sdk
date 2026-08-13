@@ -16,7 +16,7 @@
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] location
@@ -33,7 +33,7 @@
 Wonder = Struct.new(
   :build_year,
   :id,
-  :link,
+  :links,
   :location,
   :name,
   :summary,
@@ -58,7 +58,7 @@ WonderLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [String, nil]
 #
-# @!attribute [rw] link
+# @!attribute [rw] links
 #   @return [Hash, nil]
 #
 # @!attribute [rw] location
@@ -75,7 +75,7 @@ WonderLoadMatch = Struct.new(
 WonderListMatch = Struct.new(
   :build_year,
   :id,
-  :link,
+  :links,
   :location,
   :name,
   :summary,

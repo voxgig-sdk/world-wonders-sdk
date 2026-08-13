@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import WorldWondersControl
-from core.error import WorldWondersError
-from core.result import WorldWondersResult
-from core.spec import WorldWondersSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import WorldWondersControl
+from projectname_sdk.core.error import WorldWondersError
+from projectname_sdk.core.result import WorldWondersResult
+from projectname_sdk.core.spec import WorldWondersSpec
 
 
 # True when this SDK was generated with the named feature.

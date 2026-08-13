@@ -95,7 +95,7 @@ wonder = client.Wonder
 | --- | --- | --- | --- |
 | `build_year` | `Integer` | No |  |
 | `id` | `String` | No |  |
-| `link` | `Hash` | No |  |
+| `links` | `Hash` | No |  |
 | `location` | `Hash` | No |  |
 | `name` | `String` | No |  |
 | `summary` | `String` | No |  |

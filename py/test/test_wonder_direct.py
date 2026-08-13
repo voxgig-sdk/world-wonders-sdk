@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from worldwonders_sdk.utility.voxgig_struct import voxgig_struct as vs
 from worldwonders_sdk import WorldWondersSDK
-from core import helpers
+from worldwonders_sdk.core import helpers
 from test import runner
 
 
@@ -105,11 +105,11 @@ def _wonder_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "WORLDWONDERS_TEST_WONDER_ENTID": {},
-        "WORLDWONDERS_TEST_LIVE": "FALSE",
+        "WORLD_WONDERS_TEST_WONDER_ENTID": {},
+        "WORLD_WONDERS_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("WORLDWONDERS_TEST_LIVE") == "TRUE"
+    live = env.get("WORLD_WONDERS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

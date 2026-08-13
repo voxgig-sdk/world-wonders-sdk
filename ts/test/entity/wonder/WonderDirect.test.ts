@@ -19,11 +19,15 @@ import {
 describe('WonderDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WORLDWONDERS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WORLDWONDERS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WORLD_WONDERS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WORLD_WONDERS_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new WorldWondersSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -134,17 +138,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'WORLDWONDERS_TEST_WONDER_ENTID': {},
-    'WORLDWONDERS_TEST_LIVE': 'FALSE',
+    'WORLD_WONDERS_TEST_WONDER_ENTID': {},
+    'WORLD_WONDERS_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.WORLDWONDERS_TEST_LIVE
+  const live = 'TRUE' === env.WORLD_WONDERS_TEST_LIVE
 
   if (live) {
     const client = new WorldWondersSDK({
     })
 
-    let idmap: any = env['WORLDWONDERS_TEST_WONDER_ENTID']
+    let idmap: any = env['WORLD_WONDERS_TEST_WONDER_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

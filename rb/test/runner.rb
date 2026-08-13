@@ -23,8 +23,8 @@ module WorldWondersTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("WORLDWONDERS_TEST_LIVE")
-    override = getenv("WORLDWONDERS_TEST_OVERRIDE")
+    live = getenv("WORLD_WONDERS_TEST_LIVE")
+    override = getenv("WORLD_WONDERS_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module WorldWondersTestRunner
       end
     end
 
-    explain = getenv("WORLDWONDERS_TEST_EXPLAIN")
-    m["WORLDWONDERS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("WORLD_WONDERS_TEST_EXPLAIN")
+    m["WORLD_WONDERS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

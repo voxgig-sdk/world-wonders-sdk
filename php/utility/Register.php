@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ WorldWondersUtility::setRegistrar(function (WorldWondersUtility $u): void {
     $u->prepare_params = [WorldWondersPrepareParams::class, 'call'];
     $u->prepare_path = [WorldWondersPreparePath::class, 'call'];
     $u->prepare_query = [WorldWondersPrepareQuery::class, 'call'];
+    $u->graphql_body = [WorldWondersGraphql::class, 'body'];
+    $u->graphql_errors = [WorldWondersGraphql::class, 'errors'];
     $u->result_basic = [WorldWondersResultBasic::class, 'call'];
     $u->result_body = [WorldWondersResultBody::class, 'call'];
     $u->result_headers = [WorldWondersResultHeaders::class, 'call'];

@@ -43,8 +43,8 @@ class WorldWondersTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('WORLDWONDERS_TEST_LIVE');
-        $override = self::getenv('WORLDWONDERS_TEST_OVERRIDE');
+        $live = self::getenv('WORLD_WONDERS_TEST_LIVE');
+        $override = self::getenv('WORLD_WONDERS_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class WorldWondersTestRunner
             }
         }
 
-        $explain = self::getenv('WORLDWONDERS_TEST_EXPLAIN');
+        $explain = self::getenv('WORLD_WONDERS_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['WORLDWONDERS_TEST_EXPLAIN'] = $explain;
+            $m['WORLD_WONDERS_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

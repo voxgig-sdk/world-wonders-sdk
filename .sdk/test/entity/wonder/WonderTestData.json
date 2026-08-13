@@ -4,7 +4,7 @@
       "WONDER00": {
         "build_year": "s46",
         "id": "WONDER00",
-        "link": {},
+        "links": {},
         "location": {},
         "name": "s4a",
         "summary": "s4b",
@@ -13,7 +13,7 @@
       "WONDER01": {
         "build_year": "s8c",
         "id": "WONDER01",
-        "link": {},
+        "links": {},
         "location": {},
         "name": "s90",
         "summary": "s91",
@@ -22,7 +22,7 @@
       "WONDER02": {
         "build_year": "sd2",
         "id": "WONDER02",
-        "link": {},
+        "links": {},
         "location": {},
         "name": "sd6",
         "summary": "sd7",
@@ -34,7 +34,7 @@
     "wonder": {
       "wonder_ref01": {
         "build_year": "s118",
-        "link": {},
+        "links": {},
         "location": {},
         "name": "s11c",
         "summary": "s11d",

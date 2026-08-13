@@ -94,7 +94,7 @@ $wonder = $client->Wonder();
 | --- | --- | --- | --- |
 | `build_year` | `int` | No |  |
 | `id` | `string` | No |  |
-| `link` | `array` | No |  |
+| `links` | `array` | No |  |
 | `location` | `array` | No |  |
 | `name` | `string` | No |  |
 | `summary` | `string` | No |  |

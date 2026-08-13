@@ -26,8 +26,8 @@ import {
 describe('WonderEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WORLDWONDERS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WORLDWONDERS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WORLD_WONDERS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WORLD_WONDERS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = WorldWondersSDK.test()
@@ -63,13 +63,13 @@ describe('WonderEntity', async () => {
     const wonder_ref01_ent = client.Wonder()
     const wonder_ref01_match: any = {}
 
-    const wonder_ref01_list = await wonder_ref01_ent.list(wonder_ref01_match)
+    const wonder_ref01_list = (await wonder_ref01_ent.list(wonder_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const wonder_ref01_match_dt0: any = {}
     wonder_ref01_match_dt0.id = wonder_ref01_data.id
-    const wonder_ref01_data_dt0 = await wonder_ref01_ent.load(wonder_ref01_match_dt0)
+    const wonder_ref01_data_dt0 = (await wonder_ref01_ent.load(wonder_ref01_match_dt0)).data()
     assert(wonder_ref01_data_dt0.id === wonder_ref01_data.id)
 
 

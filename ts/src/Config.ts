@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'WorldWonders',
   }
 
 
@@ -70,7 +70,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "link",
+          "name": "links",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 2
@@ -134,6 +134,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/wonders",
               "parts": [
@@ -173,6 +174,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/wonders/{id}",
               "parts": [

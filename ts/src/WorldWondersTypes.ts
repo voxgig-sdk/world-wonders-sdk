@@ -8,7 +8,7 @@
 export interface Wonder {
   build_year?: number
   id?: string
-  link?: Record<string, any>
+  links?: Record<string, any>
   location?: Record<string, any>
   name?: string
   summary?: string
@@ -22,7 +22,7 @@ export interface WonderLoadMatch {
 export interface WonderListMatch {
   build_year?: number
   id?: string
-  link?: Record<string, any>
+  links?: Record<string, any>
   location?: Record<string, any>
   name?: string
   summary?: string

@@ -89,7 +89,7 @@ wonder = client.Wonder()
 | --- | --- | --- | --- |
 | `build_year` | `int` | No |  |
 | `id` | `str` | No |  |
-| `link` | `dict` | No |  |
+| `links` | `dict` | No |  |
 | `location` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `summary` | `str` | No |  |

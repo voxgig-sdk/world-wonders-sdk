@@ -16,7 +16,7 @@ main: kit: entity: wonder: {
       type: "`$STRING`"
     }
     {
-      name: "link"
+      name: "links"
       req: false
       type: "`$OBJECT`"
     }

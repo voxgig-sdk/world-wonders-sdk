@@ -100,7 +100,7 @@ fmt.Println(wonder.GetName()) // "wonder"
 | --- | --- | --- | --- |
 | `build_year` | `int` | No |  |
 | `id` | `string` | No |  |
-| `link` | `map[string]any` | No |  |
+| `links` | `map[string]any` | No |  |
 | `location` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `summary` | `string` | No |  |

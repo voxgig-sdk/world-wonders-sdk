@@ -115,11 +115,11 @@ function wonder_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["WORLDWONDERS_TEST_WONDER_ENTID"] = {},
-    ["WORLDWONDERS_TEST_LIVE"] = "FALSE",
+    ["WORLD_WONDERS_TEST_WONDER_ENTID"] = {},
+    ["WORLD_WONDERS_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["WORLDWONDERS_TEST_LIVE"] == "TRUE"
+  local live = env["WORLD_WONDERS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

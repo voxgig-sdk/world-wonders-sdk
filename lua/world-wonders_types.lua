@@ -9,7 +9,7 @@
 ---@class Wonder
 ---@field build_year? number
 ---@field id? string
----@field link? table
+---@field links? table
 ---@field location? table
 ---@field name? string
 ---@field summary? string
@@ -21,7 +21,7 @@
 ---@class WonderListMatch
 ---@field build_year? number
 ---@field id? string
----@field link? table
+---@field links? table
 ---@field location? table
 ---@field name? string
 ---@field summary? string

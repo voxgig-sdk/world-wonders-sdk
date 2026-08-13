@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# WorldWonders SDK exists test
 
 import pytest
 from worldwonders_sdk import WorldWondersSDK

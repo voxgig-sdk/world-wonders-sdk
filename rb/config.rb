@@ -41,7 +41,7 @@ module WorldWondersConfig
             },
             {
               "active" => true,
-              "name" => "link",
+              "name" => "links",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 2,
@@ -105,6 +105,7 @@ module WorldWondersConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/wonders",
                   "parts" => [
@@ -144,6 +145,7 @@ module WorldWondersConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/wonders/{id}",
                   "parts" => [

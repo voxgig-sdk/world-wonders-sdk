@@ -40,7 +40,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "link",
+            ["name"] = "links",
             ["req"] = false,
             ["type"] = "`$OBJECT`",
             ["index$"] = 2,
@@ -104,6 +104,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/wonders",
                 ["parts"] = {
@@ -143,6 +144,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/wonders/{id}",
                 ["parts"] = {

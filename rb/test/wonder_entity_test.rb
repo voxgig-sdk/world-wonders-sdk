@@ -62,7 +62,7 @@ class WonderEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set WORLDWONDERS_TEST_WONDER_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set WORLD_WONDERS_TEST_WONDER_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -87,7 +87,7 @@ class WonderEntityTest < Minitest::Test
       "id" => wonder_ref01_data["id"],
     }
     wonder_ref01_data_dt0_loaded = wonder_ref01_ent.load(wonder_ref01_match_dt0, nil)
-    wonder_ref01_data_dt0_load_result = Helpers.to_map(wonder_ref01_data_dt0_loaded)
+    wonder_ref01_data_dt0_load_result = Helpers.to_map(wonder_ref01_data_dt0_loaded.respond_to?(:data_get) ? wonder_ref01_data_dt0_loaded.data_get : wonder_ref01_data_dt0_loaded)
     assert !wonder_ref01_data_dt0_load_result.nil?
     assert_equal wonder_ref01_data_dt0_load_result["id"], wonder_ref01_data["id"]
 
@@ -120,22 +120,22 @@ def wonder_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["WORLDWONDERS_TEST_WONDER_ENTID"]
+  entid_env_raw = ENV["WORLD_WONDERS_TEST_WONDER_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "WORLDWONDERS_TEST_WONDER_ENTID" => idmap,
-    "WORLDWONDERS_TEST_LIVE" => "FALSE",
-    "WORLDWONDERS_TEST_EXPLAIN" => "FALSE",
+    "WORLD_WONDERS_TEST_WONDER_ENTID" => idmap,
+    "WORLD_WONDERS_TEST_LIVE" => "FALSE",
+    "WORLD_WONDERS_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["WORLDWONDERS_TEST_WONDER_ENTID"])
+    env["WORLD_WONDERS_TEST_WONDER_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["WORLDWONDERS_TEST_LIVE"] == "TRUE"
+  if env["WORLD_WONDERS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -144,13 +144,13 @@ def wonder_basic_setup(extra)
     client = WorldWondersSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["WORLDWONDERS_TEST_LIVE"] == "TRUE"
+  live = env["WORLD_WONDERS_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["WORLDWONDERS_TEST_EXPLAIN"] == "TRUE",
+    explain: env["WORLD_WONDERS_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

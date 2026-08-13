@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = WorldWondersSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = WorldWondersSDK.test({
+  entity: {
+    wonder: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const wonders = await client.Wonder().list()
-// wonders is an array of bare Wonder records populated with mock data
+// wonders is an array of Wonder entities, populated with mock data
+// — call wonders[0].data() for the record itself
 console.log(wonders)
 ```
 
@@ -110,7 +119,7 @@ import { WorldWondersSDK } from '@voxgig-sdk/world-wonders'
 
 const client = new WorldWondersSDK()
 
-// List all wonders (returns Wonder[])
+// List all wonders (returns WonderEntity[] — .data() for the record)
 const wonders = await client.Wonder().list()
 for (const wonder of wonders) {
   console.log(wonder)
@@ -191,7 +200,7 @@ $client = new WorldWondersSDK();
 $wonders = $client->Wonder()->list();
 print_r($wonders);
 
-// Load a specific wonder (returns the bare record; throws on error)
+// Load a specific wonder (returns the ENTITY; call data_get() for the record; throws on error)
 $wonder = $client->Wonder()->load(["id" => "example_id"]);
 print_r($wonder);
 ```
@@ -222,7 +231,7 @@ client = WorldWondersSDK.new
 wonders = client.Wonder.list
 puts wonders
 
-# Load a specific wonder (returns the bare record; raises on error)
+# Load a specific wonder (returns the ENTITY; call data_get for the record)
 wonder = client.Wonder.load({ "id" => "example_id" })
 puts wonder
 ```
@@ -359,6 +368,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.world-wonders-api.org/v0/docs](https://www.world-wonders-api.org/v0/docs)
 

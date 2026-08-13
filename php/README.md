@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Wonder record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Wonder record (throws on error).
     $wonder = $client->Wonder()->load(["id" => "example_id"]);
     print_r($wonder);
 } catch (\Throwable $err) {
@@ -140,7 +140,8 @@ $client = WorldWondersSDK::test([
     "entity" => ["wonder" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $wonder = $client->Wonder()->list();
 print_r($wonder);
 ```
@@ -240,7 +241,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -264,7 +265,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | --- | --- |
 | `build_year` |  |
 | `id` |  |
-| `link` |  |
+| `links` |  |
 | `location` |  |
 | `name` |  |
 | `summary` |  |
@@ -296,7 +297,7 @@ Create an instance: `$wonder = $client->Wonder();`
 | --- | --- | --- |
 | `build_year` | `int` |  |
 | `id` | `string` |  |
-| `link` | `array` |  |
+| `links` | `array` |  |
 | `location` | `array` |  |
 | `name` | `string` |  |
 | `summary` | `string` |  |
@@ -305,7 +306,7 @@ Create an instance: `$wonder = $client->Wonder();`
 #### Example: Load
 
 ```php
-// load() returns the bare Wonder record (throws on error).
+// load() returns the ENTITY — call data_get() for the Wonder record (throws on error).
 $wonder = $client->Wonder()->load(["id" => "wonder_id"]);
 ```
 
