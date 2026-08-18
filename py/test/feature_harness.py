@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from worldwonders_sdk.config import make_config
+from worldwonders_sdk.config import shared_config
 from worldwonders_sdk.features import _make_feature
 from worldwonders_sdk.core.control import WorldWondersControl
 from worldwonders_sdk.core.error import WorldWondersError
@@ -24,7 +24,7 @@ from worldwonders_sdk.core.spec import WorldWondersSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

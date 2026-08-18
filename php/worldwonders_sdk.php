@@ -40,7 +40,7 @@ class WorldWondersSDK
         $utility = new WorldWondersUtility();
         $this->_utility = $utility;
 
-        $config = WorldWondersConfig::make_config();
+        $config = WorldWondersConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

@@ -28,7 +28,7 @@ class WorldWondersSDK
     utility = WorldWondersUtility.new
     @_utility = utility
 
-    config = WorldWondersConfig.make_config
+    config = WorldWondersConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
