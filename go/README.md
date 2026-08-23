@@ -6,7 +6,7 @@ The Golang SDK for the WorldWonders API — an entity-oriented client using stan
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Wonder(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -269,13 +269,13 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"build_year"` |  |
-| `"id"` |  |
+| `"build_year"` | Year the wonder was built |
+| `"id"` | Unique identifier for the wonder |
 | `"links"` |  |
 | `"location"` |  |
-| `"name"` |  |
-| `"summary"` |  |
-| `"time_period"` |  |
+| `"name"` | Name of the world wonder |
+| `"summary"` | Brief summary of the wonder |
+| `"time_period"` | Historical time period of the wonder |
 
 Operations: List, Load.
 
@@ -301,13 +301,13 @@ Create an instance: `wonder := client.Wonder(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `build_year` | `int` |  |
-| `id` | `string` |  |
+| `build_year` | `int` | Year the wonder was built |
+| `id` | `string` | Unique identifier for the wonder |
 | `links` | `map[string]any` |  |
 | `location` | `map[string]any` |  |
-| `name` | `string` |  |
-| `summary` | `string` |  |
-| `time_period` | `string` |  |
+| `name` | `string` | Name of the world wonder |
+| `summary` | `string` | Brief summary of the wonder |
+| `time_period` | `string` | Historical time period of the wonder |
 
 #### Example: Load
 

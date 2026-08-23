@@ -87,13 +87,13 @@ wonder = client.Wonder()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `build_year` | `int` | No |  |
-| `id` | `str` | No |  |
+| `build_year` | `int` | No | Year the wonder was built |
+| `id` | `str` | No | Unique identifier for the wonder |
 | `links` | `dict` | No |  |
 | `location` | `dict` | No |  |
-| `name` | `str` | No |  |
-| `summary` | `str` | No |  |
-| `time_period` | `str` | No |  |
+| `name` | `str` | No | Name of the world wonder |
+| `summary` | `str` | No | Brief summary of the wonder |
+| `time_period` | `str` | No | Historical time period of the wonder |
 
 ### Operations
 

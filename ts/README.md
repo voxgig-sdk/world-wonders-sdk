@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -302,13 +302,13 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `build_year` |  |
-| `id` |  |
+| `build_year` | Year the wonder was built |
+| `id` | Unique identifier for the wonder |
 | `links` |  |
 | `location` |  |
-| `name` |  |
-| `summary` |  |
-| `time_period` |  |
+| `name` | Name of the world wonder |
+| `summary` | Brief summary of the wonder |
+| `time_period` | Historical time period of the wonder |
 
 Operations: list, load.
 
@@ -334,13 +334,13 @@ Create an instance: `const wonder = client.Wonder()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `build_year` | `number` |  |
-| `id` | `string` |  |
+| `build_year` | `number` | Year the wonder was built |
+| `id` | `string` | Unique identifier for the wonder |
 | `links` | `Record<string, any>` |  |
 | `location` | `Record<string, any>` |  |
-| `name` | `string` |  |
-| `summary` | `string` |  |
-| `time_period` | `string` |  |
+| `name` | `string` | Name of the world wonder |
+| `summary` | `string` | Brief summary of the wonder |
+| `time_period` | `string` | Historical time period of the wonder |
 
 #### Example: Load
 

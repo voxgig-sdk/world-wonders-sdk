@@ -8,11 +8,13 @@ main: kit: entity: wonder: {
     {
       name: "build_year"
       req: false
+      short: "Year the wonder was built"
       type: "`$INTEGER`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the wonder"
       type: "`$STRING`"
     }
     {
@@ -28,16 +30,19 @@ main: kit: entity: wonder: {
     {
       name: "name"
       req: false
+      short: "Name of the world wonder"
       type: "`$STRING`"
     }
     {
       name: "summary"
       req: false
+      short: "Brief summary of the wonder"
       type: "`$STRING`"
     }
     {
       name: "time_period"
       req: false
+      short: "Historical time period of the wonder"
       type: "`$STRING`"
     }
   ]

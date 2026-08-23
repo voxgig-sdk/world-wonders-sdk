@@ -93,13 +93,13 @@ wonder = client.Wonder
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `build_year` | `Integer` | No |  |
-| `id` | `String` | No |  |
+| `build_year` | `Integer` | No | Year the wonder was built |
+| `id` | `String` | No | Unique identifier for the wonder |
 | `links` | `Hash` | No |  |
 | `location` | `Hash` | No |  |
-| `name` | `String` | No |  |
-| `summary` | `String` | No |  |
-| `time_period` | `String` | No |  |
+| `name` | `String` | No | Name of the world wonder |
+| `summary` | `String` | No | Brief summary of the wonder |
+| `time_period` | `String` | No | Historical time period of the wonder |
 
 ### Operations
 

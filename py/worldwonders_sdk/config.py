@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "WorldWonders",
+            "slug": "world-wonders",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -50,10 +53,12 @@ def make_config():
         "fields": [
           {
             "name": "build_year",
+            "short": "Year the wonder was built",
             "type": "`$INTEGER`",
           },
           {
             "name": "id",
+            "short": "Unique identifier for the wonder",
             "type": "`$STRING`",
           },
           {
@@ -66,14 +71,17 @@ def make_config():
           },
           {
             "name": "name",
+            "short": "Name of the world wonder",
             "type": "`$STRING`",
           },
           {
             "name": "summary",
+            "short": "Brief summary of the wonder",
             "type": "`$STRING`",
           },
           {
             "name": "time_period",
+            "short": "Historical time period of the wonder",
             "type": "`$STRING`",
           },
         ],

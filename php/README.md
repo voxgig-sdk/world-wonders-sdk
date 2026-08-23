@@ -263,13 +263,13 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `build_year` |  |
-| `id` |  |
+| `build_year` | Year the wonder was built |
+| `id` | Unique identifier for the wonder |
 | `links` |  |
 | `location` |  |
-| `name` |  |
-| `summary` |  |
-| `time_period` |  |
+| `name` | Name of the world wonder |
+| `summary` | Brief summary of the wonder |
+| `time_period` | Historical time period of the wonder |
 
 Operations: List, Load.
 
@@ -295,13 +295,13 @@ Create an instance: `$wonder = $client->Wonder();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `build_year` | `int` |  |
-| `id` | `string` |  |
+| `build_year` | `int` | Year the wonder was built |
+| `id` | `string` | Unique identifier for the wonder |
 | `links` | `array` |  |
 | `location` | `array` |  |
-| `name` | `string` |  |
-| `summary` | `string` |  |
-| `time_period` | `string` |  |
+| `name` | `string` | Name of the world wonder |
+| `summary` | `string` | Brief summary of the wonder |
+| `time_period` | `string` | Historical time period of the wonder |
 
 #### Example: Load
 

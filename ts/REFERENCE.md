@@ -116,13 +116,13 @@ const wonder = client.Wonder()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `build_year` | `number` | No |  |
-| `id` | `string` | No |  |
+| `build_year` | `number` | No | Year the wonder was built |
+| `id` | `string` | No | Unique identifier for the wonder |
 | `links` | `Record<string, any>` | No |  |
 | `location` | `Record<string, any>` | No |  |
-| `name` | `string` | No |  |
-| `summary` | `string` | No |  |
-| `time_period` | `string` | No |  |
+| `name` | `string` | No | Name of the world wonder |
+| `summary` | `string` | No | Brief summary of the wonder |
+| `time_period` | `string` | No | Historical time period of the wonder |
 
 ### Operations
 

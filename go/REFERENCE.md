@@ -98,13 +98,13 @@ fmt.Println(wonder.GetName()) // "wonder"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `build_year` | `int` | No |  |
-| `id` | `string` | No |  |
+| `build_year` | `int` | No | Year the wonder was built |
+| `id` | `string` | No | Unique identifier for the wonder |
 | `links` | `map[string]any` | No |  |
 | `location` | `map[string]any` | No |  |
-| `name` | `string` | No |  |
-| `summary` | `string` | No |  |
-| `time_period` | `string` | No |  |
+| `name` | `string` | No | Name of the world wonder |
+| `summary` | `string` | No | Brief summary of the wonder |
+| `time_period` | `string` | No | Historical time period of the wonder |
 
 ### Operations
 

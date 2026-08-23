@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "WorldWonders",
+			"slug": "world-wonders",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -33,10 +36,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "build_year",
+						"short": "Year the wonder was built",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the wonder",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -49,14 +54,17 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the world wonder",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "summary",
+						"short": "Brief summary of the wonder",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "time_period",
+						"short": "Historical time period of the wonder",
 						"type": "`$STRING`",
 					},
 				},

@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'WorldWonders',
+        slug: "world-wonders",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,10 +67,12 @@ class Config {
       "fields": [
         {
           "name": "build_year",
+          "short": "Year the wonder was built",
           "type": "`$INTEGER`"
         },
         {
           "name": "id",
+          "short": "Unique identifier for the wonder",
           "type": "`$STRING`"
         },
         {
@@ -72,14 +85,17 @@ class Config {
         },
         {
           "name": "name",
+          "short": "Name of the world wonder",
           "type": "`$STRING`"
         },
         {
           "name": "summary",
+          "short": "Brief summary of the wonder",
           "type": "`$STRING`"
         },
         {
           "name": "time_period",
+          "short": "Historical time period of the wonder",
           "type": "`$STRING`"
         }
       ],

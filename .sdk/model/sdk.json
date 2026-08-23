@@ -36,12 +36,14 @@
               "active": true,
               "name": "build_year",
               "req": false,
+              "short": "Year the wonder was built",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the wonder",
               "type": "`$STRING`"
             },
             {
@@ -60,18 +62,21 @@
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the world wonder",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "summary",
               "req": false,
+              "short": "Brief summary of the wonder",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "time_period",
               "req": false,
+              "short": "Historical time period of the wonder",
               "type": "`$STRING`"
             }
           ],

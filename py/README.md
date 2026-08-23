@@ -256,13 +256,13 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `build_year` |  |
-| `id` |  |
+| `build_year` | Year the wonder was built |
+| `id` | Unique identifier for the wonder |
 | `links` |  |
 | `location` |  |
-| `name` |  |
-| `summary` |  |
-| `time_period` |  |
+| `name` | Name of the world wonder |
+| `summary` | Brief summary of the wonder |
+| `time_period` | Historical time period of the wonder |
 
 Operations: List, Load.
 
@@ -288,13 +288,13 @@ Create an instance: `wonder = client.Wonder()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `build_year` | `int` |  |
-| `id` | `str` |  |
+| `build_year` | `int` | Year the wonder was built |
+| `id` | `str` | Unique identifier for the wonder |
 | `links` | `dict` |  |
 | `location` | `dict` |  |
-| `name` | `str` |  |
-| `summary` | `str` |  |
-| `time_period` | `str` |  |
+| `name` | `str` | Name of the world wonder |
+| `summary` | `str` | Brief summary of the wonder |
+| `time_period` | `str` | Historical time period of the wonder |
 
 #### Example: Load
 

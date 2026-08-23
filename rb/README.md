@@ -253,13 +253,13 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `build_year` |  |
-| `id` |  |
+| `build_year` | Year the wonder was built |
+| `id` | Unique identifier for the wonder |
 | `links` |  |
 | `location` |  |
-| `name` |  |
-| `summary` |  |
-| `time_period` |  |
+| `name` | Name of the world wonder |
+| `summary` | Brief summary of the wonder |
+| `time_period` | Historical time period of the wonder |
 
 Operations: List, Load.
 
@@ -285,13 +285,13 @@ Create an instance: `wonder = client.Wonder`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `build_year` | `Integer` |  |
-| `id` | `String` |  |
+| `build_year` | `Integer` | Year the wonder was built |
+| `id` | `String` | Unique identifier for the wonder |
 | `links` | `Hash` |  |
 | `location` | `Hash` |  |
-| `name` | `String` |  |
-| `summary` | `String` |  |
-| `time_period` | `String` |  |
+| `name` | `String` | Name of the world wonder |
+| `summary` | `String` | Brief summary of the wonder |
+| `time_period` | `String` | Historical time period of the wonder |
 
 #### Example: Load
 

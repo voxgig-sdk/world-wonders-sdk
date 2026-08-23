@@ -241,13 +241,13 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `build_year` |  |
-| `id` |  |
+| `build_year` | Year the wonder was built |
+| `id` | Unique identifier for the wonder |
 | `links` |  |
 | `location` |  |
-| `name` |  |
-| `summary` |  |
-| `time_period` |  |
+| `name` | Name of the world wonder |
+| `summary` | Brief summary of the wonder |
+| `time_period` | Historical time period of the wonder |
 
 Operations: List, Load.
 
@@ -273,13 +273,13 @@ Create an instance: `local wonder = client:Wonder(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `build_year` | `number` |  |
-| `id` | `string` |  |
+| `build_year` | `number` | Year the wonder was built |
+| `id` | `string` | Unique identifier for the wonder |
 | `links` | `table` |  |
 | `location` | `table` |  |
-| `name` | `string` |  |
-| `summary` | `string` |  |
-| `time_period` | `string` |  |
+| `name` | `string` | Name of the world wonder |
+| `summary` | `string` | Brief summary of the wonder |
+| `time_period` | `string` | Historical time period of the wonder |
 
 #### Example: Load
 
