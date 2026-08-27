@@ -28,6 +28,7 @@ module WorldWondersConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
