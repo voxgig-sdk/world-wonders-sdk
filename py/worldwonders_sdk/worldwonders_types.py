@@ -31,10 +31,5 @@ class WonderLoadMatch(TypedDict):
 
 
 class WonderListMatch(TypedDict, total=False):
-    build_year: int
-    id: str
-    links: dict
-    location: dict
-    name: str
-    summary: str
-    time_period: str
+    limit: int
+    offset: int

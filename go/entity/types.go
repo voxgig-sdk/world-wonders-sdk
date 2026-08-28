@@ -30,13 +30,8 @@ type WonderLoadMatch struct {
 
 // WonderListMatch is the typed request payload for Wonder.ListTyped.
 type WonderListMatch struct {
-	BuildYear *int `json:"build_year,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Links *map[string]any `json:"links,omitempty"`
-	Location *map[string]any `json:"location,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Summary *string `json:"summary,omitempty"`
-	TimePeriod *string `json:"time_period,omitempty"`
+	Limit *int `json:"limit,omitempty"`
+	Offset *int `json:"offset,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

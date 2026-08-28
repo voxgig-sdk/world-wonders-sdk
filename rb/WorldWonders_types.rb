@@ -52,34 +52,14 @@ WonderLoadMatch = Struct.new(
 
 # Request payload for Wonder#list.
 #
-# @!attribute [rw] build_year
+# @!attribute [rw] limit
 #   @return [Integer, nil]
 #
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] links
-#   @return [Hash, nil]
-#
-# @!attribute [rw] location
-#   @return [Hash, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] summary
-#   @return [String, nil]
-#
-# @!attribute [rw] time_period
-#   @return [String, nil]
+# @!attribute [rw] offset
+#   @return [Integer, nil]
 WonderListMatch = Struct.new(
-  :build_year,
-  :id,
-  :links,
-  :location,
-  :name,
-  :summary,
-  :time_period,
+  :limit,
+  :offset,
   keyword_init: true
 )
 

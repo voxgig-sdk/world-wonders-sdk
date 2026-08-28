@@ -33,12 +33,7 @@ class WonderLoadMatch
 /** Request payload for Wonder#list. */
 class WonderListMatch
 {
-    public ?int $build_year = null;
-    public ?string $id = null;
-    public ?array $links = null;
-    public ?array $location = null;
-    public ?string $name = null;
-    public ?string $summary = null;
-    public ?string $time_period = null;
+    public ?int $limit = null;
+    public ?int $offset = null;
 }
 

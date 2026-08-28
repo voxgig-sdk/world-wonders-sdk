@@ -19,13 +19,8 @@
 ---@field id string
 
 ---@class WonderListMatch
----@field build_year? number
----@field id? string
----@field links? table
----@field location? table
----@field name? string
----@field summary? string
----@field time_period? string
+---@field limit? number
+---@field offset? number
 
 local M = {}
 
