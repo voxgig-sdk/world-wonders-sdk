@@ -65,6 +65,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "wonder",
         ["op"] = {
           ["list"] = {
@@ -93,8 +97,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/wonders",
-                ["parts"] = {
-                  "wonders",
+                ["segments"] = {
+                  {
+                    ["lit"] = "wonders",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -105,6 +111,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "wonders",
                 },
               },
             },
@@ -128,9 +137,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/wonders/{id}",
-                ["parts"] = {
-                  "wonders",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "wonders",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -140,6 +153,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "wonders",
+                  "{id}",
                 },
               },
             },

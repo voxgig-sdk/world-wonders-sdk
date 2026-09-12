@@ -77,6 +77,10 @@ module WorldWondersConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "wonder",
           "op" => {
             "list" => {
@@ -105,8 +109,10 @@ module WorldWondersConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/wonders",
-                  "parts" => [
-                    "wonders",
+                  "segments" => [
+                    {
+                      "lit" => "wonders",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -118,6 +124,9 @@ module WorldWondersConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "wonders",
+                  ],
                 },
               ],
             },
@@ -140,9 +149,13 @@ module WorldWondersConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/wonders/{id}",
-                  "parts" => [
-                    "wonders",
-                    "{id}",
+                  "segments" => [
+                    {
+                      "lit" => "wonders",
+                    },
+                    {
+                      "var" => "id",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -153,6 +166,10 @@ module WorldWondersConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "wonders",
+                    "{id}",
+                  ],
                 },
               ],
             },

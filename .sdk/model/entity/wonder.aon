@@ -80,8 +80,10 @@ main: kit: entity: wonder: {
           }
           method: "GET"
           orig: "/wonders"
-          parts: [
-            "wonders"
+          segments: [
+            {
+              lit: "wonders"
+            }
           ]
           select: {
             exist: [
@@ -113,9 +115,13 @@ main: kit: entity: wonder: {
           }
           method: "GET"
           orig: "/wonders/{id}"
-          parts: [
-            "wonders"
-            "{id}"
+          segments: [
+            {
+              lit: "wonders"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [
