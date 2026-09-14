@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { WorldWondersSDK } from '@voxgig-sdk/world-wonders'
+import { WorldWondersSDK } from '@voxgig-sdk/world-wonders-sdk'
 
 const client = new WorldWondersSDK()
 ```
@@ -437,7 +437,7 @@ world-wonders/
 Import the SDK from the package root:
 
 ```ts
-import { WorldWondersSDK } from '@voxgig-sdk/world-wonders'
+import { WorldWondersSDK } from '@voxgig-sdk/world-wonders-sdk'
 ```
 
 ### Entity state

@@ -105,7 +105,7 @@ local results, err = client:Wonder():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/releases) |
+| TypeScript | `@voxgig-sdk/world-wonders-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/releases) |
 | Python | `voxgig-sdk-world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/releases) |
 | PHP | `voxgig-sdk/world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/world-wonders-sdk/go` | `go get github.com/voxgig-sdk/world-wonders-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Wonder():list()
 ### TypeScript
 
 ```ts
-import { WorldWondersSDK } from '@voxgig-sdk/world-wonders'
+import { WorldWondersSDK } from '@voxgig-sdk/world-wonders-sdk'
 
 const client = new WorldWondersSDK()
 
