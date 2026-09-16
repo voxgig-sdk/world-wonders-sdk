@@ -1,12 +1,18 @@
 # WorldWonders SDK feature factory
 
 from worldwonders_sdk.feature.base_feature import WorldWondersBaseFeature
+from worldwonders_sdk.feature.ratelimit_feature import WorldWondersRatelimitFeature
+from worldwonders_sdk.feature.retry_feature import WorldWondersRetryFeature
 from worldwonders_sdk.feature.test_feature import WorldWondersTestFeature
+from worldwonders_sdk.feature.timeout_feature import WorldWondersTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: WorldWondersBaseFeature(),
+    "ratelimit": lambda: WorldWondersRatelimitFeature(),
+    "retry": lambda: WorldWondersRetryFeature(),
     "test": lambda: WorldWondersTestFeature(),
+    "timeout": lambda: WorldWondersTimeoutFeature(),
 }
 
 

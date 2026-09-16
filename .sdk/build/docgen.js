@@ -1,15 +1,2 @@
-
-const { DocGen } = require('@voxgig/docgen')
-
-const config = {
-  root: __dirname+'/../dist/DocStaticRoot.js',
-  folder: __dirname+'/../../doc',
-  meta: {
-    name: 'world-wonders'
-  },
-  model: {
-    folder: __dirname+'/../model',
-  },
-}
-
-module.exports = DocGen.makeBuild(config)
+// Docgen owns the default edition set and preserves project customisations.
+require('@voxgig/docgen').prepareProject(require('node:path').resolve(__dirname, '../..'))
