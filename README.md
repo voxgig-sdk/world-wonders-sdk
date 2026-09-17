@@ -105,12 +105,12 @@ local results, err = client:Wonder():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/world-wonders-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/releases) |
-| Python | `voxgig-sdk-world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/releases) |
-| PHP | `voxgig-sdk/world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/releases) |
+| TypeScript | `@voxgig-sdk/world-wonders-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/tags) |
+| Python | `voxgig-sdk-world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/tags) |
+| PHP | `voxgig-sdk/world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/world-wonders-sdk/go` | `go get github.com/voxgig-sdk/world-wonders-sdk/go@latest` |
-| Ruby | `voxgig-sdk-world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/releases) |
-| Lua | `voxgig-sdk-world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/releases) |
+| Ruby | `voxgig-sdk-world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/tags) |
+| Lua | `voxgig-sdk-world-wonders` | publish pending — [install from git tag](https://github.com/voxgig-sdk/world-wonders-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/world-wonders-sdk/go-cli` | `go install github.com/voxgig-sdk/world-wonders-sdk/go-cli/cmd/world-wonders@latest` |
 | Go MCP server | `github.com/voxgig-sdk/world-wonders-sdk/go-mcp` | `go get github.com/voxgig-sdk/world-wonders-sdk/go-mcp@latest` |
 
