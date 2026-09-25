@@ -1,7 +1,7 @@
 // Typed models for the WorldWonders SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,13 +14,6 @@ import (
 
 // Wonder is the typed data model for the wonder entity.
 type Wonder struct {
-	BuildYear *int `json:"build_year,omitempty"`
-	Id *string `json:"id,omitempty"`
-	Links *map[string]any `json:"links,omitempty"`
-	Location *map[string]any `json:"location,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Summary *string `json:"summary,omitempty"`
-	TimePeriod *string `json:"time_period,omitempty"`
 }
 
 // WonderLoadMatch is the typed request payload for Wonder.LoadTyped.

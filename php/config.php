@@ -113,36 +113,43 @@ class WorldWondersConfig
           'fields' => [
             [
               'name' => 'build_year',
-              'short' => 'Year the wonder was built',
+              'title' => 'Build Year',
               'type' => '`$INTEGER`',
+              'short' => 'Year the wonder was built',
             ],
             [
               'name' => 'id',
-              'short' => 'Unique identifier for the wonder',
+              'title' => 'Id',
               'type' => '`$STRING`',
+              'short' => 'Unique identifier for the wonder',
             ],
             [
               'name' => 'links',
+              'title' => 'Links',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'location',
+              'title' => 'Location',
               'type' => '`$OBJECT`',
             ],
             [
               'name' => 'name',
-              'short' => 'Name of the world wonder',
+              'title' => 'Name',
               'type' => '`$STRING`',
+              'short' => 'Name of the world wonder',
             ],
             [
               'name' => 'summary',
-              'short' => 'Brief summary of the wonder',
+              'title' => 'Summary',
               'type' => '`$STRING`',
+              'short' => 'Brief summary of the wonder',
             ],
             [
               'name' => 'time_period',
-              'short' => 'Historical time period of the wonder',
+              'title' => 'Time Period',
               'type' => '`$STRING`',
+              'short' => 'Historical time period of the wonder',
             ],
           ],
           'id' => [
@@ -156,24 +163,6 @@ class WorldWondersConfig
               'name' => 'list',
               'points' => [
                 [
-                  'args' => [
-                    'query' => [
-                      [
-                        'example' => 10,
-                        'kind' => 'query',
-                        'name' => 'limit',
-                        'orig' => 'limit',
-                        'type' => '`$INTEGER`',
-                      ],
-                      [
-                        'example' => 0,
-                        'kind' => 'query',
-                        'name' => 'offset',
-                        'orig' => 'offset',
-                        'type' => '`$INTEGER`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/wonders',
@@ -182,18 +171,37 @@ class WorldWondersConfig
                       'lit' => 'wonders',
                     ],
                   ],
+                  'parts' => [
+                    'wonders',
+                  ],
+                  'rename' => [],
+                  'transform' => [
+                    'req' => '`reqdata`',
+                    'res' => '`body`',
+                  ],
+                  'args' => [
+                    'query' => [
+                      [
+                        'name' => 'limit',
+                        'orig' => 'limit',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 10,
+                      ],
+                      [
+                        'name' => 'offset',
+                        'orig' => 'offset',
+                        'type' => '`$INTEGER`',
+                        'kind' => 'query',
+                        'example' => 0,
+                      ],
+                    ],
+                  ],
                   'select' => [
                     'exist' => [
                       'limit',
                       'offset',
                     ],
-                  ],
-                  'transform' => [
-                    'req' => '`reqdata`',
-                    'res' => '`body`',
-                  ],
-                  'parts' => [
-                    'wonders',
                   ],
                 ],
               ],
@@ -203,17 +211,6 @@ class WorldWondersConfig
               'name' => 'load',
               'points' => [
                 [
-                  'args' => [
-                    'params' => [
-                      [
-                        'kind' => 'param',
-                        'name' => 'id',
-                        'orig' => 'id',
-                        'reqd' => true,
-                        'type' => '`$STRING`',
-                      ],
-                    ],
-                  ],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/wonders/{id}',
@@ -225,18 +222,30 @@ class WorldWondersConfig
                       'var' => 'id',
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'id',
-                    ],
+                  'parts' => [
+                    'wonders',
+                    '{id}',
                   ],
+                  'rename' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'parts' => [
-                    'wonders',
-                    '{id}',
+                  'args' => [
+                    'params' => [
+                      [
+                        'name' => 'id',
+                        'orig' => 'id',
+                        'type' => '`$STRING`',
+                        'kind' => 'param',
+                        'reqd' => true,
+                      ],
+                    ],
+                  ],
+                  'select' => [
+                    'exist' => [
+                      'id',
+                    ],
                   ],
                 ],
               ],

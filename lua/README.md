@@ -43,7 +43,7 @@ local wonders, err = client:Wonder():list()
 if err then error(err) end
 
 for _, item in ipairs(wonders) do
-  print(item["id"], item["name"])
+  print(item["id"])
 end
 ```
 

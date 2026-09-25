@@ -91,36 +91,43 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "build_year",
-						"short": "Year the wonder was built",
+						"title": "Build Year",
 						"type": "`$INTEGER`",
+						"short": "Year the wonder was built",
 					},
 					map[string]any{
 						"name": "id",
-						"short": "Unique identifier for the wonder",
+						"title": "Id",
 						"type": "`$STRING`",
+						"short": "Unique identifier for the wonder",
 					},
 					map[string]any{
 						"name": "links",
+						"title": "Links",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "location",
+						"title": "Location",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "name",
-						"short": "Name of the world wonder",
+						"title": "Name",
 						"type": "`$STRING`",
+						"short": "Name of the world wonder",
 					},
 					map[string]any{
 						"name": "summary",
-						"short": "Brief summary of the wonder",
+						"title": "Summary",
 						"type": "`$STRING`",
+						"short": "Brief summary of the wonder",
 					},
 					map[string]any{
 						"name": "time_period",
-						"short": "Historical time period of the wonder",
+						"title": "Time Period",
 						"type": "`$STRING`",
+						"short": "Historical time period of the wonder",
 					},
 				},
 				"id": map[string]any{
@@ -134,24 +141,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 10,
-											"kind": "query",
-											"name": "limit",
-											"orig": "limit",
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 0,
-											"kind": "query",
-											"name": "offset",
-											"orig": "offset",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/wonders",
@@ -160,18 +149,37 @@ func MakeConfig() map[string]any {
 										"lit": "wonders",
 									},
 								},
+								"parts": []any{
+									"wonders",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "limit",
+											"orig": "limit",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 10,
+										},
+										map[string]any{
+											"name": "offset",
+											"orig": "offset",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"example": 0,
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"limit",
 										"offset",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"wonders",
 								},
 							},
 						},
@@ -181,17 +189,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "id",
-											"orig": "id",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/wonders/{id}",
@@ -203,18 +200,30 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
-									},
+								"parts": []any{
+									"wonders",
+									"{id}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"wonders",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "id",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
