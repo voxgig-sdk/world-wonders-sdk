@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 WorldWondersUtility.registrar = ->(u) {
   u.clean = WorldWondersUtilities::Clean
+  u.clean_add = WorldWondersUtilities::CleanAdd
+  u.clean_explain = WorldWondersUtilities::CleanExplain
   u.done = WorldWondersUtilities::Done
   u.make_error = WorldWondersUtilities::MakeError
   u.feature_add = WorldWondersUtilities::FeatureAdd

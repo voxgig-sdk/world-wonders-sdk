@@ -15,9 +15,13 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`):
+release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/world-wonders-sdk/releases)), or from a
+clone, which carries the compiled `dist/`:
 
-- Releases: [https://github.com/voxgig-sdk/world-wonders-sdk/releases](https://github.com/voxgig-sdk/world-wonders-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/world-wonders-sdk
+npm install ./world-wonders-sdk/ts
+```
 
 
 ## Tutorial: your first API call

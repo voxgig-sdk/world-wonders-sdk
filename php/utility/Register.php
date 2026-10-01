@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 WorldWondersUtility::setRegistrar(function (WorldWondersUtility $u): void {
     $u->clean = [WorldWondersClean::class, 'call'];
+    $u->clean_add = [WorldWondersClean::class, 'add'];
+    $u->clean_explain = [WorldWondersDone::class, 'clean_explain'];
     $u->done = [WorldWondersDone::class, 'call'];
     $u->make_error = [WorldWondersMakeError::class, 'call'];
     $u->feature_add = [WorldWondersFeatureAdd::class, 'call'];
