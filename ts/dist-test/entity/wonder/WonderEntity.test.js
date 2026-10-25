@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Wonder();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('wonder hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.WorldWondersSDK.test(offline).Wonder().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.WorldWondersSDK.test(offline).Wonder()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.WorldWondersSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Wonder().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.WorldWondersSDK.test().Wonder().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.WorldWondersSDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Wonder().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Wonder().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.WorldWondersSDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Wonder().list({ "limit": "x" }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.WORLD_WONDERS_TEST_LIVE;
         for (const op of ['list', 'load']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "build_year": { "a": true, "h": "Build Year", "n": "build_year", "r": false, "sh": "Year the wonder was built", "t": "`$INTEGER`", "key$": "build_year", "index$": 0 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "Unique identifier for the wonder", "t": "`$STRING`", "key$": "id", "index$": 1 }, "links": { "a": true, "h": "Links", "n": "links", "r": false, "t": "`$OBJECT`", "key$": "links", "index$": 2 }, "location": { "a": true, "h": "Location", "n": "location", "r": false, "t": "`$OBJECT`", "key$": "location", "index$": 3 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Name of the world wonder", "t": "`$STRING`", "key$": "name", "index$": 4 }, "summary": { "a": true, "h": "Summary", "n": "summary", "r": false, "sh": "Brief summary of the wonder", "t": "`$STRING`", "key$": "summary", "index$": 5 }, "time_period": { "a": true, "h": "Time Period", "n": "time_period", "r": false, "sh": "Historical time period of the wonder", "t": "`$STRING`", "key$": "time_period", "index$": 6 } }, "id": { "field": "id", "name": "id" }, "name": "wonder", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /wonders", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": 10, "k": "query", "n": "limit", "or": "limit", "r": false, "t": "`$INTEGER`", "index$": 0 }, { "a": true, "ex": 0, "k": "query", "n": "offset", "or": "offset", "r": false, "t": "`$INTEGER`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/wonders", "q": { "exist": ["limit", "offset"] }, "r": {}, "s": [{ "lit": "wonders" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /wonders/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/wonders/{id}", "q": { "exist": ["id"] }, "r": {}, "s": [{ "lit": "wonders" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "wonder", "name__orig": "wonder", "Name": "Wonder", "name_": "wonder", "name-": "wonder", "NAME": "WONDER", "index$": 0 }, { "active": true, "entity": "wonder", "key$": "BasicWonderFlow", "kind": "basic", "name": "BasicWonderFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "wonder_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "wonder_ref01", "srcdatavar": "wonder_ref01_data", "suffix": "_dt0" }, "m": { "id": "wonder01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-wonder_ref01" } }], "index$": 1 }] }, 'Wonder', { "GET /wonders": { "protocol": "http", "parameters": [{ "name": "limit", "in": "query", "description": "Maximum number of wonders to return", "required": false, "schema": { "type": "integer", "minimum": 1, "maximum": 100, "default": 10 }, "index$": 0 }, { "name": "offset", "in": "query", "description": "Number of wonders to skip", "required": false, "schema": { "type": "integer", "minimum": 0, "default": 0 }, "index$": 1 }] }, "GET /wonders/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "description": "Unique identifier of the world wonder", "required": true, "schema": { "type": "string" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "build_year": { "a": true, "h": "Build Year", "n": "build_year", "r": false, "sh": "Year the wonder was built", "t": "`$INTEGER`", "key$": "build_year", "index$": 0 }, "id": { "a": true, "h": "Id", "n": "id", "r": false, "sh": "Unique identifier for the wonder", "t": "`$STRING`", "key$": "id", "index$": 1 }, "links": { "a": true, "h": "Links", "n": "links", "r": false, "t": "`$OBJECT`", "key$": "links", "index$": 2 }, "location": { "a": true, "h": "Location", "n": "location", "r": false, "t": "`$OBJECT`", "key$": "location", "index$": 3 }, "name": { "a": true, "h": "Name", "n": "name", "r": false, "sh": "Name of the world wonder", "t": "`$STRING`", "key$": "name", "index$": 4 }, "summary": { "a": true, "h": "Summary", "n": "summary", "r": false, "sh": "Brief summary of the wonder", "t": "`$STRING`", "key$": "summary", "index$": 5 }, "time_period": { "a": true, "h": "Time Period", "n": "time_period", "r": false, "sh": "Historical time period of the wonder", "t": "`$STRING`", "key$": "time_period", "index$": 6 } }, "id": { "field": "id", "name": "id" }, "name": "wonder", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /wonders", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": 10, "k": "query", "n": "limit", "or": "limit", "r": false, "t": "`$INTEGER`", "index$": 0 }, { "a": true, "ex": 0, "k": "query", "n": "offset", "or": "offset", "r": false, "t": "`$INTEGER`", "index$": 1 }] }, "k": "http", "m": "GET", "o": "/wonders", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "wonders" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /wonders/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/wonders/{id}", "q": { "exist": ["id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "wonders" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "wonder", "name__orig": "wonder", "Name": "Wonder", "name_": "wonder", "name-": "wonder", "NAME": "WONDER", "index$": 0 }, { "active": true, "entity": "wonder", "key$": "BasicWonderFlow", "kind": "basic", "name": "BasicWonderFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "wonder_ref01" } }], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "wonder_ref01", "srcdatavar": "wonder_ref01_data", "suffix": "_dt0" }, "m": { "id": "wonder01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-wonder_ref01" } }], "index$": 1 }] }, 'Wonder', { "GET /wonders": { "protocol": "http", "parameters": [{ "name": "limit", "in": "query", "description": "Maximum number of wonders to return", "required": false, "schema": { "type": "integer", "minimum": 1, "maximum": 100, "default": 10 }, "index$": 0 }, { "name": "offset", "in": "query", "description": "Number of wonders to skip", "required": false, "schema": { "type": "integer", "minimum": 0, "default": 0 }, "index$": 1 }] }, "GET /wonders/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "description": "Unique identifier of the world wonder", "required": true, "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -80,6 +127,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(wonder_ref01_data_dt0.id === wonder_ref01_data.id);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

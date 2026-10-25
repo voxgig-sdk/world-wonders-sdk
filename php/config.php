@@ -93,6 +93,7 @@ class WorldWondersConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -197,11 +198,10 @@ class WorldWondersConfig
                       ],
                     ],
                   ],
-                  'select' => [
-                    'exist' => [
-                      'limit',
-                      'offset',
-                    ],
+                  'select' => [],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],
@@ -246,6 +246,10 @@ class WorldWondersConfig
                     'exist' => [
                       'id',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

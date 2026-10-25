@@ -79,6 +79,7 @@ module WorldWondersConfig
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -183,11 +184,10 @@ module WorldWondersConfig
                       },
                     ],
                   },
-                  "select" => {
-                    "exist" => [
-                      "limit",
-                      "offset",
-                    ],
+                  "select" => {},
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -232,6 +232,10 @@ module WorldWondersConfig
                     "exist" => [
                       "id",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

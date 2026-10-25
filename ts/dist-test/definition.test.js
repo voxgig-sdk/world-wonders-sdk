@@ -16,13 +16,27 @@ const PLAN = [
         "path": "/wonders",
         "args": [],
         "select": {
-            "limit": "v1",
-            "offset": "v1"
+            "limit": 10,
+            "offset": 0
         },
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [
             "limit",
             "offset"
+        ],
+        "queryArgs": [
+            {
+                "name": "limit",
+                "wire": "limit"
+            },
+            {
+                "name": "offset",
+                "wire": "offset"
+            }
         ],
         "auth": null,
         "status": 200,
@@ -67,7 +81,12 @@ const PLAN = [
         ],
         "select": {},
         "headers": [],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
+        "queryArgs": [],
         "auth": null,
         "status": 200,
         "sample": {

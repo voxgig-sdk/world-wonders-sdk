@@ -3,5 +3,17 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Brief summary of the wonder",
+      "Free and open source API providing information about world wonders",
+      "Historical time period of the wonder",
+      "Name of the world wonder",
+      "Production server",
+      "Successful response",
+      "Unique identifier for the wonder",
+      "Year the wonder was built"
+    ]
+  }
 }

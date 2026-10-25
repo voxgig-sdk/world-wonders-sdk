@@ -92,11 +92,9 @@ main: kit: entity: wonder: {
           }
           m: "GET"
           o: "/wonders"
-          q: {
-            exist: [
-              "limit"
-              "offset"
-            ]
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
@@ -136,6 +134,10 @@ main: kit: entity: wonder: {
             exist: [
               "id"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {
